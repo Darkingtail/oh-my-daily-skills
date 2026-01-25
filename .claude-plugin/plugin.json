@@ -1,0 +1,11 @@
+{
+  "name": "oh-my-daily-skills",
+  "version": "0.1.0",
+  "description": "A collection of daily-use skills for Claude Code, prefixed with sansan:",
+  "author": {
+    "name": "shiqkuangsan"
+  },
+  "repository": "https://github.com/shiqkuangsan/oh-my-daily-skills",
+  "license": "MIT",
+  "keywords": ["skills", "openrouter", "llm", "productivity"]
+}
