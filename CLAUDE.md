@@ -9,18 +9,29 @@ This is a Claude Code plugin repository containing a collection of skills. Skill
 ## Skill Structure
 
 Each skill lives in `skills/<skill-name>/` with:
-- `SKILL.md` - Main skill file with YAML frontmatter (name, description, version)
+- `SKILL.md` - Main skill file with YAML frontmatter
 - `references/` - Optional directory for advanced topics and supplementary documentation
 
 ### SKILL.md Frontmatter Format
 
+遵循 [Agent Skills Specification](https://agentskills.io/specification)：
+
 ```yaml
 ---
-name: tooyoung:skill-name    # or personal:skill-name for personal skills
+name: tooyoung:skill-name
 description: Single line description of what the skill does.
-version: 0.1.0
+compatibility: Optional environment requirements
+metadata:
+  version: "0.1.0"
 ---
 ```
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| name | Yes | 技能名称，格式 `prefix:skill-name` |
+| description | Yes | 单行描述，最大 1024 字符 |
+| compatibility | No | 环境要求（如 Docker、特定路径） |
+| metadata.version | Yes | 语义化版本号 |
 
 ### Naming Convention
 
@@ -33,10 +44,10 @@ Personal skills (prefixed with `_`) contain environment-specific paths and confi
 
 ## Key Guidelines
 
-- Description must be a single line (no YAML multiline syntax like `>` or `|`)
-- Always include `version` field in frontmatter
-- Keep SKILL.md focused; move advanced content to `references/` subdirectory
-- Personal skills must include a note indicating they require path modifications for reuse
+- Description 必须是单行（不使用 YAML 多行语法 `>` 或 `|`）
+- version 字段放在 `metadata` 下，值用引号包裹
+- Personal skills 使用 `compatibility` 字段说明环境要求
+- SKILL.md 保持精简，高级内容移至 `references/` 目录
 
 ## Versioning
 

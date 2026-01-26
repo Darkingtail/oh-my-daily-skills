@@ -1,7 +1,8 @@
 ---
 name: tooyoung:easy-openrouter
-version: 0.1.0
 description: 通过 OpenRouter 快速测试和比较 LLM 模型。用于找最快/最便宜的模型、对比响应质量。触发词：openrouter、测试模型、比较模型、找最快模型、找最便宜模型
+metadata:
+  version: "0.1.0"
 ---
 
 # Easy OpenRouter

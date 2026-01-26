@@ -1,7 +1,8 @@
 ---
 name: tooyoung:chainlit-builder
-version: 0.1.0
 description: 快速搭建 Chainlit AI 对话 Demo。用于产品演示、概念验证、领导汇报场景。触发词：chainlit、搭建 demo、chat demo、对话演示
+metadata:
+  version: "0.1.0"
 ---
 
 # Chainlit Demo Builder
