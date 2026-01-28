@@ -26,6 +26,42 @@ git clone https://github.com/shiqkuangsan/oh-my-daily-skills.git
 claude --plugin-dir /path/to/oh-my-daily-skills
 ```
 
+## Local Configuration
+
+You can customize Claude's behavior with local configuration files that won't be tracked by git:
+
+### `CLAUDE.local.md`
+
+Create a `CLAUDE.local.md` file in the project root to add your personal instructions:
+
+```bash
+touch CLAUDE.local.md
+```
+
+This file is:
+- ✅ **Private** - Ignored by git (listed in `.gitignore`)
+- ✅ **Project-specific** - Only affects this project
+- ✅ **Higher priority** - Overrides default behaviors
+
+**Example use cases:**
+- Custom tone and style preferences
+- Personal coding conventions
+- Project-specific shortcuts
+- Environment-specific configurations
+
+**Example content:**
+```markdown
+# My Personal Instructions
+
+## Tone
+- Be concise and direct
+- Use emojis sparingly
+
+## Code Style
+- Always use TypeScript strict mode
+- Prefer functional components in React
+```
+
 ## Skills
 
 ### General Skills (`tooyoung:`)

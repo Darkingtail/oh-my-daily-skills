@@ -26,6 +26,42 @@ git clone https://github.com/shiqkuangsan/oh-my-daily-skills.git
 claude --plugin-dir /path/to/oh-my-daily-skills
 ```
 
+## 本地配置
+
+你可以通过本地配置文件自定义 Claude 的行为，这些文件不会被 git 追踪：
+
+### `CLAUDE.local.md`
+
+在项目根目录创建 `CLAUDE.local.md` 文件来添加你的个人指令：
+
+```bash
+touch CLAUDE.local.md
+```
+
+此文件特点：
+- ✅ **私有** - 被 git 忽略（在 `.gitignore` 中）
+- ✅ **项目专属** - 仅影响当前项目
+- ✅ **优先级高** - 覆盖默认行为
+
+**使用场景：**
+- 自定义语气和风格偏好
+- 个人编码规范
+- 项目专属快捷方式
+- 环境相关配置
+
+**示例内容：**
+```markdown
+# 我的个人指令
+
+## 语气
+- 简洁直接
+- 少用 emoji
+
+## 代码风格
+- 始终使用 TypeScript 严格模式
+- React 优先使用函数组件
+```
+
 ## 技能列表
 
 ### 通用技能 (`tooyoung:`)
