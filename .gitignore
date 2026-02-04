@@ -19,6 +19,9 @@ npm-debug.log*
 .env.local
 .env.*.local
 
+# examples
+examples/*
+
 # AI
 .playwright-mcp
 
