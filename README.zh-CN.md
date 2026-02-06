@@ -66,12 +66,15 @@ touch CLAUDE.local.md
 
 | 技能 | 命令 | 描述 |
 |------|------|------|
+| blobity-cursor | `/tooyoung:blobity-cursor` | 为任意落地页添加 Blobity 光标特效 |
 | chainlit-builder | `/tooyoung:chainlit-builder` | 快速搭建 Chainlit AI 对话 Demo |
 | easy-openrouter | `/tooyoung:easy-openrouter` | 通过 OpenRouter 测试和比较 LLM 模型 |
 | excalidraw-artist | `/tooyoung:excalidraw-artist` | 创建 Excalidraw 手绘风格图表 |
-| expense-receipt | `/tooyoung:expense-receipt` | AI 订阅报销收据识别与统计 |
+| gh-star-list | `/tooyoung:gh-star-list` | 用 AI 自动将 GitHub Stars 分类整理到 Lists |
 | nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini 图像生成应用 |
 | openclash-merger | `/tooyoung:openclash-merger` | OpenClash 订阅配置合并 |
+| persona-define | `/tooyoung:persona-define` | 为 Claude Code 定义个性化身份风格（人设） |
+| shitcode | `/shitcode` | 编写"烂代码"用于教学或娱乐演示 |
 | threejs-builder | `/tooyoung:threejs-builder` | Three.js Web 应用创建 |
 
 ### 个人技能 (`personal:`)
@@ -92,12 +95,15 @@ oh-my-daily-skills/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── skills/
+│   ├── blobity-cursor/
 │   ├── chainlit-builder/
 │   ├── easy-openrouter/
 │   ├── excalidraw-artist/
-│   ├── expense-receipt/
+│   ├── gh-star-list/
 │   ├── nano-banana-builder/
 │   ├── openclash-merger/
+│   ├── persona-define/
+│   ├── shitcode/
 │   ├── threejs-builder/
 │   ├── _expense-receipt/   # 个人技能（前缀 _）
 │   └── _mac-docker/        # 个人技能（前缀 _）

@@ -66,12 +66,15 @@ This file is:
 
 | Skill | Command | Description |
 |-------|---------|-------------|
+| blobity-cursor | `/tooyoung:blobity-cursor` | Add Blobity canvas cursor effect to any landing page |
 | chainlit-builder | `/tooyoung:chainlit-builder` | Build Chainlit AI chat demo quickly |
 | easy-openrouter | `/tooyoung:easy-openrouter` | Test and compare LLM models via OpenRouter |
 | excalidraw-artist | `/tooyoung:excalidraw-artist` | Create Excalidraw hand-drawn style diagrams |
-| expense-receipt | `/tooyoung:expense-receipt` | AI subscription expense receipt recognition |
+| gh-star-list | `/tooyoung:gh-star-list` | Categorize GitHub starred repos into Lists using AI |
 | nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini image generation app |
 | openclash-merger | `/tooyoung:openclash-merger` | Merge OpenClash subscription configs |
+| persona-define | `/tooyoung:persona-define` | Define personalized identity style for Claude Code |
+| shitcode | `/shitcode` | Write intentionally bad code for teaching or entertainment |
 | threejs-builder | `/tooyoung:threejs-builder` | Create Three.js web applications |
 
 ### Personal Skills (`personal:`)
@@ -92,12 +95,15 @@ oh-my-daily-skills/
 ├── .claude-plugin/
 │   └── plugin.json
 ├── skills/
+│   ├── blobity-cursor/
 │   ├── chainlit-builder/
 │   ├── easy-openrouter/
 │   ├── excalidraw-artist/
-│   ├── expense-receipt/
+│   ├── gh-star-list/
 │   ├── nano-banana-builder/
 │   ├── openclash-merger/
+│   ├── persona-define/
+│   ├── shitcode/
 │   ├── threejs-builder/
 │   ├── _expense-receipt/   # Personal skill (prefix with _)
 │   └── _mac-docker/        # Personal skill (prefix with _)
