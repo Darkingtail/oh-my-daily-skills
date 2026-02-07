@@ -37,25 +37,30 @@ touch CLAUDE.local.md
 ```
 
 This file is:
+
 - ✅ **Private** - Ignored by git (listed in `.gitignore`)
 - ✅ **Project-specific** - Only affects this project
 - ✅ **Higher priority** - Overrides default behaviors
 
 **Example use cases:**
+
 - Custom tone and style preferences
 - Personal coding conventions
 - Project-specific shortcuts
 - Environment-specific configurations
 
 **Example content:**
+
 ```markdown
 # My Personal Instructions
 
 ## Tone
+
 - Be concise and direct
 - Use emojis sparingly
 
 ## Code Style
+
 - Always use TypeScript strict mode
 - Prefer functional components in React
 ```
@@ -64,29 +69,31 @@ This file is:
 
 ### General Skills (`tooyoung:`)
 
-| Skill | Command | Description |
-|-------|---------|-------------|
-| blobity-cursor | `/tooyoung:blobity-cursor` | Add Blobity canvas cursor effect to any landing page |
-| chainlit-builder | `/tooyoung:chainlit-builder` | Build Chainlit AI chat demo quickly |
-| easy-openrouter | `/tooyoung:easy-openrouter` | Test and compare LLM models via OpenRouter |
-| excalidraw-artist | `/tooyoung:excalidraw-artist` | Create Excalidraw hand-drawn style diagrams |
-| gh-star-list | `/tooyoung:gh-star-list` | Categorize GitHub starred repos into Lists using AI |
-| nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini image generation app |
-| openclash-merger | `/tooyoung:openclash-merger` | Merge OpenClash subscription configs |
-| persona-define | `/tooyoung:persona-define` | Define personalized identity style for Claude Code |
-| shitcode | `/shitcode` | Write intentionally bad code for teaching or entertainment |
-| threejs-builder | `/tooyoung:threejs-builder` | Create Three.js web applications |
+| Skill               | Command                         | Description                                                     |
+| ------------------- | ------------------------------- | --------------------------------------------------------------- |
+| blobity-cursor      | `/tooyoung:blobity-cursor`      | Add Blobity canvas cursor effect to any landing page            |
+| chainlit-builder    | `/tooyoung:chainlit-builder`    | Build Chainlit AI chat demo quickly                             |
+| easy-openrouter     | `/tooyoung:easy-openrouter`     | Test and compare LLM models via OpenRouter                      |
+| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | Create Excalidraw hand-drawn style diagrams                     |
+| gh-star-list        | `/tooyoung:gh-star-list`        | Categorize GitHub starred repos into Lists using AI             |
+| nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini image generation app                              |
+| openclash-merger    | `/tooyoung:openclash-merger`    | Merge OpenClash subscription configs                            |
+| persona-define      | `/tooyoung:persona-define`      | Define personalized identity style for Claude Code              |
+| ink-reader          | `/tooyoung:ink-reader`          | Intelligently read any URL content with auto platform detection |
+| shitcode            | `/shitcode`                     | Write intentionally bad code for teaching or entertainment      |
+| threejs-builder     | `/tooyoung:threejs-builder`     | Create Three.js web applications                                |
 
 ### Personal Skills (`personal:`)
 
 > ⚠️ **Not Ready to Use** — These are personal configuration templates with placeholder paths. Before use:
+>
 > 1. Copy to your `~/.claude/skills/` directory
 > 2. Replace placeholders like `$BASE_PATH` with actual paths
 
-| Skill | Command | Description |
-|-------|---------|-------------|
-| _expense-receipt | `/personal:expense-receipt` | AI subscription expense receipt recognition (personal) |
-| _mac-docker | `/personal:mac-docker` | Docker service management config template |
+| Skill             | Command                     | Description                                            |
+| ----------------- | --------------------------- | ------------------------------------------------------ |
+| \_expense-receipt | `/personal:expense-receipt` | AI subscription expense receipt recognition (personal) |
+| \_mac-docker      | `/personal:mac-docker`      | Docker service management config template              |
 
 ## Structure
 
@@ -100,6 +107,7 @@ oh-my-daily-skills/
 │   ├── easy-openrouter/
 │   ├── excalidraw-artist/
 │   ├── gh-star-list/
+│   ├── ink-reader/
 │   ├── nano-banana-builder/
 │   ├── openclash-merger/
 │   ├── persona-define/
@@ -112,20 +120,20 @@ oh-my-daily-skills/
 
 ## Naming Convention
 
-| Type | Directory | Name Prefix | Example |
-|------|-----------|-------------|---------|
-| General skill | `skill-name` | `tooyoung:` | `tooyoung:chainlit-builder` |
-| Personal skill | `_skill-name` | `personal:` | `personal:mac-docker` |
+| Type           | Directory     | Name Prefix | Example                     |
+| -------------- | ------------- | ----------- | --------------------------- |
+| General skill  | `skill-name`  | `tooyoung:` | `tooyoung:chainlit-builder` |
+| Personal skill | `_skill-name` | `personal:` | `personal:mac-docker`       |
 
 ## Versioning
 
 Following [Semantic Versioning](https://semver.org/):
 
-| Version | Change Type | Example |
-|---------|-------------|---------|
-| x.0.0 (MAJOR) | Breaking changes | Refactor skill structure, remove features |
-| 0.x.0 (MINOR) | New features | Add new commands, new sections |
-| 0.0.x (PATCH) | Fixes/Improvements | Doc fixes, formatting adjustments |
+| Version       | Change Type        | Example                                   |
+| ------------- | ------------------ | ----------------------------------------- |
+| x.0.0 (MAJOR) | Breaking changes   | Refactor skill structure, remove features |
+| 0.x.0 (MINOR) | New features       | Add new commands, new sections            |
+| 0.0.x (PATCH) | Fixes/Improvements | Doc fixes, formatting adjustments         |
 
 ## License
 

@@ -37,25 +37,30 @@ touch CLAUDE.local.md
 ```
 
 此文件特点：
+
 - ✅ **私有** - 被 git 忽略（在 `.gitignore` 中）
 - ✅ **项目专属** - 仅影响当前项目
 - ✅ **优先级高** - 覆盖默认行为
 
 **使用场景：**
+
 - 自定义语气和风格偏好
 - 个人编码规范
 - 项目专属快捷方式
 - 环境相关配置
 
 **示例内容：**
+
 ```markdown
 # 我的个人指令
 
 ## 语气
+
 - 简洁直接
 - 少用 emoji
 
 ## 代码风格
+
 - 始终使用 TypeScript 严格模式
 - React 优先使用函数组件
 ```
@@ -64,29 +69,31 @@ touch CLAUDE.local.md
 
 ### 通用技能 (`tooyoung:`)
 
-| 技能 | 命令 | 描述 |
-|------|------|------|
-| blobity-cursor | `/tooyoung:blobity-cursor` | 为任意落地页添加 Blobity 光标特效 |
-| chainlit-builder | `/tooyoung:chainlit-builder` | 快速搭建 Chainlit AI 对话 Demo |
-| easy-openrouter | `/tooyoung:easy-openrouter` | 通过 OpenRouter 测试和比较 LLM 模型 |
-| excalidraw-artist | `/tooyoung:excalidraw-artist` | 创建 Excalidraw 手绘风格图表 |
-| gh-star-list | `/tooyoung:gh-star-list` | 用 AI 自动将 GitHub Stars 分类整理到 Lists |
-| nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini 图像生成应用 |
-| openclash-merger | `/tooyoung:openclash-merger` | OpenClash 订阅配置合并 |
-| persona-define | `/tooyoung:persona-define` | 为 Claude Code 定义个性化身份风格（人设） |
-| shitcode | `/shitcode` | 编写"烂代码"用于教学或娱乐演示 |
-| threejs-builder | `/tooyoung:threejs-builder` | Three.js Web 应用创建 |
+| 技能                | 命令                            | 描述                                                  |
+| ------------------- | ------------------------------- | ----------------------------------------------------- |
+| blobity-cursor      | `/tooyoung:blobity-cursor`      | 为任意落地页添加 Blobity 光标特效                     |
+| chainlit-builder    | `/tooyoung:chainlit-builder`    | 快速搭建 Chainlit AI 对话 Demo                        |
+| easy-openrouter     | `/tooyoung:easy-openrouter`     | 通过 OpenRouter 测试和比较 LLM 模型                   |
+| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | 创建 Excalidraw 手绘风格图表                          |
+| gh-star-list        | `/tooyoung:gh-star-list`        | 用 AI 自动将 GitHub Stars 分类整理到 Lists            |
+| nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini 图像生成应用                            |
+| openclash-merger    | `/tooyoung:openclash-merger`    | OpenClash 订阅配置合并                                |
+| persona-define      | `/tooyoung:persona-define`      | 为 Claude Code 定义个性化身份风格（人设）             |
+| ink-reader          | `/tooyoung:ink-reader`          | 智能读取任意 URL 内容，自动识别平台并选择最优抓取策略 |
+| shitcode            | `/shitcode`                     | 编写"烂代码"用于教学或娱乐演示                        |
+| threejs-builder     | `/tooyoung:threejs-builder`     | Three.js Web 应用创建                                 |
 
 ### 个人技能 (`personal:`)
 
 > ⚠️ **不可直接使用** — 这是个人配置的参考模板，包含占位符路径。使用前需：
+>
 > 1. 复制到你的 `~/.claude/skills/` 目录
 > 2. 将 `$BASE_PATH` 等占位符替换为实际路径
 
-| 技能 | 命令 | 描述 |
-|------|------|------|
-| _expense-receipt | `/personal:expense-receipt` | AI 订阅报销收据识别（个人版） |
-| _mac-docker | `/personal:mac-docker` | Docker 服务管理配置模板 |
+| 技能              | 命令                        | 描述                          |
+| ----------------- | --------------------------- | ----------------------------- |
+| \_expense-receipt | `/personal:expense-receipt` | AI 订阅报销收据识别（个人版） |
+| \_mac-docker      | `/personal:mac-docker`      | Docker 服务管理配置模板       |
 
 ## 项目结构
 
@@ -100,6 +107,7 @@ oh-my-daily-skills/
 │   ├── easy-openrouter/
 │   ├── excalidraw-artist/
 │   ├── gh-star-list/
+│   ├── ink-reader/
 │   ├── nano-banana-builder/
 │   ├── openclash-merger/
 │   ├── persona-define/
@@ -112,20 +120,20 @@ oh-my-daily-skills/
 
 ## 命名规范
 
-| 类型 | 目录名 | name 前缀 | 示例 |
-|------|--------|-----------|------|
-| 通用技能 | `skill-name` | `tooyoung:` | `tooyoung:chainlit-builder` |
-| 个人技能 | `_skill-name` | `personal:` | `personal:mac-docker` |
+| 类型     | 目录名        | name 前缀   | 示例                        |
+| -------- | ------------- | ----------- | --------------------------- |
+| 通用技能 | `skill-name`  | `tooyoung:` | `tooyoung:chainlit-builder` |
+| 个人技能 | `_skill-name` | `personal:` | `personal:mac-docker`       |
 
 ## 版本规范
 
 遵循 [Semantic Versioning](https://semver.org/) 规范：
 
-| 版本号 | 变更类型 | 示例 |
-|--------|----------|------|
+| 版本号        | 变更类型   | 示例                      |
+| ------------- | ---------- | ------------------------- |
 | x.0.0 (MAJOR) | 破坏性变更 | 重构 skill 结构、移除功能 |
-| 0.x.0 (MINOR) | 新增功能 | 添加新命令、新章节 |
-| 0.0.x (PATCH) | 修复/优化 | 文档修正、格式调整 |
+| 0.x.0 (MINOR) | 新增功能   | 添加新命令、新章节        |
+| 0.0.x (PATCH) | 修复/优化  | 文档修正、格式调整        |
 
 ## 开源协议
 
