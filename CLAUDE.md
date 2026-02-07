@@ -50,6 +50,18 @@ Personal skills (prefixed with `_`) contain environment-specific paths and confi
 - Personal skills 使用 `compatibility` 字段说明环境要求
 - SKILL.md 保持精简，高级内容移至 `references/` 目录
 
+## Markdown Lint & Format
+
+项目使用 `markdownlint-cli2` + `prettier` 保证 Markdown 规范：
+
+```bash
+pnpm run check        # lint + format 检查
+pnpm run lint:fix     # 自动修复 lint 问题
+pnpm run format       # 格式化所有 md 文件
+```
+
+编辑 `.md` 文件后，确保 `pnpm run check` 通过再提交。
+
 ## Versioning
 
 遵循 [Semantic Versioning](https://semver.org/)：
