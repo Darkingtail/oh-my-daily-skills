@@ -29,33 +29,33 @@ Minimal working example — copy into any HTML page:
 
 <!-- Load Blobity via ESM CDN (npm: import Blobity from 'blobity') -->
 <script type="module">
-  import Blobity from 'https://esm.sh/blobity@0.2.3';
+  import Blobity from "https://esm.sh/blobity@0.2.3";
 
   // Skip touch devices
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-    throw new Error('Touch device — skip Blobity');
+  if ("ontouchstart" in window || navigator.maxTouchPoints > 0) {
+    throw new Error("Touch device — skip Blobity");
   }
 
   const blobity = new Blobity({
-    licenseKey: 'opensource',
+    licenseKey: "opensource",
     invert: true,
     zIndex: 50,
-    color: '#ffffff', // Canvas fill → difference with dark bg = light
-    dotColor: '#10b981', // Resting cursor dot color
+    color: "#ffffff", // Canvas fill → difference with dark bg = light
+    dotColor: "#10b981", // Resting cursor dot color
     radius: 6,
     magnetic: false,
-    mode: 'normal',
-    focusableElements: 'a, button, [data-blobity], [data-blobity-tooltip]',
+    mode: "normal",
+    focusableElements: "a, button, [data-blobity], [data-blobity-tooltip]",
     focusableElementsOffsetX: 5,
     focusableElementsOffsetY: 4,
     font: "'JetBrains Mono', monospace",
     fontSize: 16,
     fontWeight: 600,
-    fontColor: '#0d1117', // Tooltip text color on canvas
+    fontColor: "#0d1117", // Tooltip text color on canvas
     tooltipPadding: 12,
   });
 
-  document.body.classList.add('blobity-active');
+  document.body.classList.add("blobity-active");
 </script>
 ```
 
@@ -71,7 +71,7 @@ Add `data-blobity-tooltip="Label text"` to any element for tooltip mode:
 
 ```html
 <script type="module">
-  import Blobity from 'https://esm.sh/blobity@0.2.3';
+  import Blobity from "https://esm.sh/blobity@0.2.3";
 </script>
 ```
 
@@ -91,7 +91,7 @@ yarn add blobity
 ```
 
 ```js
-import Blobity from 'blobity';
+import Blobity from "blobity";
 ```
 
 > Blobity has `react` and `vue` as optional peer dependencies. Ignore the warning if you're not using their bindings.
@@ -120,22 +120,22 @@ Watch for theme attribute changes and update Blobity options dynamically:
 
 ```js
 const isDark = () =>
-  document.documentElement.getAttribute('data-theme') !== 'light';
+  document.documentElement.getAttribute("data-theme") !== "light";
 // Alternative checks:
 //   document.documentElement.classList.contains('dark')
 //   window.matchMedia('(prefers-color-scheme: dark)').matches
 
 const observer = new MutationObserver(() => {
   blobity.updateOptions({
-    color: isDark() ? '#ffffff' : '#190a11',
-    dotColor: isDark() ? '#10b981' : '#111827',
-    fontColor: isDark() ? '#0d1117' : '#000000',
+    color: isDark() ? "#ffffff" : "#190a11",
+    dotColor: isDark() ? "#10b981" : "#111827",
+    fontColor: isDark() ? "#0d1117" : "#000000",
   });
 });
 
 observer.observe(document.documentElement, {
   attributes: true,
-  attributeFilter: ['data-theme', 'class'],
+  attributeFilter: ["data-theme", "class"],
 });
 ```
 
@@ -195,7 +195,7 @@ This is a `mix-blend-mode: difference` color math issue. See the Theme Adaptatio
 Always skip Blobity on touch devices — there's no mouse cursor to replace:
 
 ```js
-const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 if (isTouchDevice) return;
 ```
 
@@ -206,10 +206,10 @@ Blobity must be destroyed on route change to avoid canvas leaks:
 ```js
 // Astro view transitions
 document.addEventListener(
-  'astro:before-swap',
+  "astro:before-swap",
   () => {
     observer.disconnect();
-    document.body.classList.remove('blobity-active');
+    document.body.classList.remove("blobity-active");
     blobity.destroy();
   },
   { once: true },
@@ -245,7 +245,7 @@ Add a playful bounce effect when user scrolls:
 ```js
 let scrollTimeout = null;
 window.addEventListener(
-  'scroll',
+  "scroll",
   () => {
     if (scrollTimeout) return;
     scrollTimeout = setTimeout(() => {

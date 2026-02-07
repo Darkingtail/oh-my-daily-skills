@@ -20,14 +20,14 @@ Top-level structure of every `.excalidraw` file:
 
 ## Element Types
 
-| type | Usage | Unique Properties |
-|------|-------|-------------------|
-| `rectangle` | Rectangle/rounded rectangle | roundness |
-| `ellipse` | Ellipse/circle | - |
-| `diamond` | Diamond (decision) | - |
-| `line` | Line/polyline | points |
-| `arrow` | Arrow connector | points, startArrowhead, endArrowhead, startBinding, endBinding |
-| `text` | Text | text, fontSize, fontFamily, textAlign, containerId |
+| type        | Usage                       | Unique Properties                                              |
+| ----------- | --------------------------- | -------------------------------------------------------------- |
+| `rectangle` | Rectangle/rounded rectangle | roundness                                                      |
+| `ellipse`   | Ellipse/circle              | -                                                              |
+| `diamond`   | Diamond (decision)          | -                                                              |
+| `line`      | Line/polyline               | points                                                         |
+| `arrow`     | Arrow connector             | points, startArrowhead, endArrowhead, startBinding, endBinding |
+| `text`      | Text                        | text, fontSize, fontFamily, textAlign, containerId             |
 
 ## Common Properties
 
@@ -63,13 +63,13 @@ Properties shared by all elements:
 
 ### Style Properties
 
-| Property | Values | Description |
-|----------|--------|-------------|
-| `fillStyle` | `"solid"`, `"hachure"`, `"cross-hatch"` | Fill style |
-| `strokeStyle` | `"solid"`, `"dashed"`, `"dotted"` | Line style |
-| `strokeWidth` | 1, 2, 4 | Line width |
-| `roughness` | 0, 1, 2 | Hand-drawn feel (0=smooth, 2=rough) |
-| `opacity` | 0-100 | Transparency |
+| Property      | Values                                  | Description                         |
+| ------------- | --------------------------------------- | ----------------------------------- |
+| `fillStyle`   | `"solid"`, `"hachure"`, `"cross-hatch"` | Fill style                          |
+| `strokeStyle` | `"solid"`, `"dashed"`, `"dotted"`       | Line style                          |
+| `strokeWidth` | 1, 2, 4                                 | Line width                          |
+| `roughness`   | 0, 1, 2                                 | Hand-drawn feel (0=smooth, 2=rough) |
+| `opacity`     | 0-100                                   | Transparency                        |
 
 ### Roundness
 
@@ -94,28 +94,31 @@ Properties shared by all elements:
   "fontFamily": 1,
   "textAlign": "center",
   "verticalAlign": "middle",
-  "containerId": "parent-element-id"  // Bind to container
+  "containerId": "parent-element-id" // Bind to container
 }
 ```
 
-| fontFamily | Font |
-|------------|------|
-| 1 | Virgil (handwritten) |
-| 2 | Helvetica |
-| 3 | Cascadia (monospace) |
+| fontFamily | Font                 |
+| ---------- | -------------------- |
+| 1          | Virgil (handwritten) |
+| 2          | Helvetica            |
+| 3          | Cascadia (monospace) |
 
-| textAlign | Horizontal Alignment |
-|-----------|----------------------|
-| `"left"` | Left |
-| `"center"` | Center |
-| `"right"` | Right |
+| textAlign  | Horizontal Alignment |
+| ---------- | -------------------- |
+| `"left"`   | Left                 |
+| `"center"` | Center               |
+| `"right"`  | Right                |
 
 ### Arrow Properties
 
 ```json
 {
   "type": "arrow",
-  "points": [[0, 0], [100, 0]],
+  "points": [
+    [0, 0],
+    [100, 0]
+  ],
   "startArrowhead": null,
   "endArrowhead": "arrow",
   "startBinding": {
@@ -131,13 +134,13 @@ Properties shared by all elements:
 }
 ```
 
-| arrowhead | Style |
-|-----------|-------|
-| `null` | No arrowhead |
-| `"arrow"` | Standard arrow |
-| `"bar"` | Vertical bar |
-| `"dot"` | Circle |
-| `"triangle"` | Triangle |
+| arrowhead    | Style          |
+| ------------ | -------------- |
+| `null`       | No arrowhead   |
+| `"arrow"`    | Standard arrow |
+| `"bar"`      | Vertical bar   |
+| `"dot"`      | Circle         |
+| `"triangle"` | Triangle       |
 
 ### Grouping
 
@@ -175,25 +178,25 @@ Container and text binding:
 
 ### Business Style
 
-| Purpose | Color |
-|---------|-------|
-| Primary/Text | `#1e3a5f` |
-| Secondary | `#4a90d9` |
-| Background Blue | `#dbeafe` |
-| Background Green | `#dcfce7` |
+| Purpose           | Color     |
+| ----------------- | --------- |
+| Primary/Text      | `#1e3a5f` |
+| Secondary         | `#4a90d9` |
+| Background Blue   | `#dbeafe` |
+| Background Green  | `#dcfce7` |
 | Background Yellow | `#fef3c7` |
-| Accent Green | `#10b981` |
-| Border Gray | `#6b7b8c` |
-| Light Gray | `#9ca3af` |
+| Accent Green      | `#10b981` |
+| Border Gray       | `#6b7b8c` |
+| Light Gray        | `#9ca3af` |
 
 ### Status Colors
 
-| Status | Background | Border |
-|--------|------------|--------|
-| Success | `#dcfce7` | `#10b981` |
-| Warning | `#fef3c7` | `#f59e0b` |
-| Error | `#fee2e2` | `#ef4444` |
-| Info | `#dbeafe` | `#3b82f6` |
+| Status  | Background | Border    |
+| ------- | ---------- | --------- |
+| Success | `#dcfce7`  | `#10b981` |
+| Warning | `#fef3c7`  | `#f59e0b` |
+| Error   | `#fee2e2`  | `#ef4444` |
+| Info    | `#dbeafe`  | `#3b82f6` |
 
 ## Coordinates & Layout
 

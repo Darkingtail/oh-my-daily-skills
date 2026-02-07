@@ -11,13 +11,13 @@ Create professional hand-drawn style diagrams with Excalidraw, outputting `.exca
 
 ## Supported Diagram Types
 
-| Type | Use Cases |
-|------|-----------|
-| Architecture | System design, microservices, layered architecture |
-| Flowchart | Business processes, approval workflows, deployment flows |
-| Swimlane | Multi-role collaboration, cross-department processes |
-| Sequence | API calls, message flows |
-| Wireframe | UI prototypes, page layouts |
+| Type         | Use Cases                                                |
+| ------------ | -------------------------------------------------------- |
+| Architecture | System design, microservices, layered architecture       |
+| Flowchart    | Business processes, approval workflows, deployment flows |
+| Swimlane     | Multi-role collaboration, cross-department processes     |
+| Sequence     | API calls, message flows                                 |
+| Wireframe    | UI prototypes, page layouts                              |
 
 ## Quick Start
 
@@ -33,6 +33,7 @@ Output files can be opened and edited at [excalidraw.com](https://excalidraw.com
 ## Design Principles
 
 ### Layout
+
 - Horizontal flow: left to right
 - Vertical hierarchy: top to bottom
 - Consistent spacing: 40-60px between elements
@@ -41,33 +42,34 @@ Output files can be opened and edited at [excalidraw.com](https://excalidraw.com
 ### Color Palette (recommended, adjustable per context)
 
 **Business Style** (default):
-| Purpose | Color |
-|---------|-------|
-| Primary | #1e3a5f |
-| Secondary | #4a90d9 |
+
+| Purpose    | Color   |
+| ---------- | ------- |
+| Primary    | #1e3a5f |
+| Secondary  | #4a90d9 |
 | Background | #f1f5f9 |
-| Accent | #10b981 |
-| Border | #6b7b8c |
+| Accent     | #10b981 |
+| Border     | #6b7b8c |
 
 **Minimal Style**: Primary #1f2937, Border #9ca3af, Background #ffffff
 
 ### Element Selection
 
-| Type | Shape | Usage |
-|------|-------|-------|
-| Core Component | Rounded Rectangle | Services, modules |
-| Process Node | Rectangle | Steps, actions |
-| Decision Point | Diamond | Conditions, branches |
-| Data Source | Cylinder | Databases |
-| Start/End | Ellipse | Start, end |
+| Type           | Shape             | Usage                |
+| -------------- | ----------------- | -------------------- |
+| Core Component | Rounded Rectangle | Services, modules    |
+| Process Node   | Rectangle         | Steps, actions       |
+| Decision Point | Diamond           | Conditions, branches |
+| Data Source    | Cylinder          | Databases            |
+| Start/End      | Ellipse           | Start, end           |
 
 ### Connectors
 
-| Style | Usage |
-|-------|-------|
-| Solid Arrow | Main flow |
-| Dashed Arrow | Optional/async |
-| Bidirectional Arrow | Two-way calls |
+| Style               | Usage          |
+| ------------------- | -------------- |
+| Solid Arrow         | Main flow      |
+| Dashed Arrow        | Optional/async |
+| Bidirectional Arrow | Two-way calls  |
 
 ## Workflow
 
@@ -78,10 +80,10 @@ Output files can be opened and edited at [excalidraw.com](https://excalidraw.com
 
 ## Reference Documentation
 
-| File | Content |
-|------|---------|
-| `references/examples.md` | Complete JSON examples for 3 diagram types |
-| `references/element-ref.md` | Element properties quick reference |
+| File                        | Content                                    |
+| --------------------------- | ------------------------------------------ |
+| `references/examples.md`    | Complete JSON examples for 3 diagram types |
+| `references/element-ref.md` | Element properties quick reference         |
 
 ## Notes
 

@@ -101,9 +101,7 @@ A basic yes/no decision flowchart.
       "roughness": 1,
       "roundness": { "type": 3 },
       "seed": 3,
-      "boundElements": [
-        { "id": "text-yes", "type": "text" }
-      ]
+      "boundElements": [{ "id": "text-yes", "type": "text" }]
     },
     {
       "id": "text-yes",
@@ -130,7 +128,10 @@ A basic yes/no decision flowchart.
       "strokeColor": "#6b7b8c",
       "strokeWidth": 2,
       "roughness": 1,
-      "points": [[0, 0], [0, 50]],
+      "points": [
+        [0, 0],
+        [0, 50]
+      ],
       "startBinding": { "elementId": "start", "focus": 0, "gap": 1 },
       "endBinding": { "elementId": "decision", "focus": 0, "gap": 1 },
       "startArrowhead": null,
@@ -146,7 +147,10 @@ A basic yes/no decision flowchart.
       "strokeColor": "#10b981",
       "strokeWidth": 2,
       "roughness": 1,
-      "points": [[0, 0], [38, 0]],
+      "points": [
+        [0, 0],
+        [38, 0]
+      ],
       "startBinding": { "elementId": "decision", "focus": 0, "gap": 1 },
       "endBinding": { "elementId": "action-yes", "focus": 0, "gap": 1 },
       "startArrowhead": null,
@@ -297,7 +301,10 @@ Classic Client → Server → Database architecture.
       "strokeColor": "#6b7b8c",
       "strokeWidth": 2,
       "roughness": 1,
-      "points": [[0, 0], [100, 0]],
+      "points": [
+        [0, 0],
+        [100, 0]
+      ],
       "startBinding": { "elementId": "client", "focus": 0, "gap": 1 },
       "endBinding": { "elementId": "server", "focus": 0, "gap": 1 },
       "startArrowhead": "arrow",
@@ -326,7 +333,10 @@ Classic Client → Server → Database architecture.
       "strokeColor": "#6b7b8c",
       "strokeWidth": 2,
       "roughness": 1,
-      "points": [[0, 0], [100, 0]],
+      "points": [
+        [0, 0],
+        [100, 0]
+      ],
       "startBinding": { "elementId": "server", "focus": 0, "gap": 1 },
       "endBinding": { "elementId": "database", "focus": 0, "gap": 1 },
       "startArrowhead": "arrow",
@@ -469,7 +479,10 @@ Login authentication sequence diagram.
       "strokeWidth": 1,
       "strokeStyle": "dashed",
       "roughness": 0,
-      "points": [[0, 0], [0, 200]]
+      "points": [
+        [0, 0],
+        [0, 200]
+      ]
     },
     {
       "id": "lifeline-auth",
@@ -482,7 +495,10 @@ Login authentication sequence diagram.
       "strokeWidth": 1,
       "strokeStyle": "dashed",
       "roughness": 0,
-      "points": [[0, 0], [0, 200]]
+      "points": [
+        [0, 0],
+        [0, 200]
+      ]
     },
     {
       "id": "lifeline-db",
@@ -495,7 +511,10 @@ Login authentication sequence diagram.
       "strokeWidth": 1,
       "strokeStyle": "dashed",
       "roughness": 0,
-      "points": [[0, 0], [0, 200]]
+      "points": [
+        [0, 0],
+        [0, 200]
+      ]
     },
     {
       "id": "msg1",
@@ -507,7 +526,10 @@ Login authentication sequence diagram.
       "strokeColor": "#1e3a5f",
       "strokeWidth": 2,
       "roughness": 1,
-      "points": [[0, 0], [180, 0]],
+      "points": [
+        [0, 0],
+        [180, 0]
+      ],
       "endArrowhead": "arrow"
     },
     {
@@ -532,7 +554,10 @@ Login authentication sequence diagram.
       "strokeColor": "#1e3a5f",
       "strokeWidth": 2,
       "roughness": 1,
-      "points": [[0, 0], [180, 0]],
+      "points": [
+        [0, 0],
+        [180, 0]
+      ],
       "endArrowhead": "arrow"
     },
     {
@@ -558,7 +583,10 @@ Login authentication sequence diagram.
       "strokeWidth": 2,
       "strokeStyle": "dashed",
       "roughness": 1,
-      "points": [[0, 0], [-180, 0]],
+      "points": [
+        [0, 0],
+        [-180, 0]
+      ],
       "endArrowhead": "arrow"
     },
     {
@@ -584,7 +612,10 @@ Login authentication sequence diagram.
       "strokeWidth": 2,
       "strokeStyle": "dashed",
       "roughness": 1,
-      "points": [[0, 0], [-180, 0]],
+      "points": [
+        [0, 0],
+        [-180, 0]
+      ],
       "endArrowhead": "arrow"
     },
     {

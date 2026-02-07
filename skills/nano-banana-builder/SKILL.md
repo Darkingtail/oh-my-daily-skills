@@ -15,16 +15,17 @@ Build production-ready web applications powered by Google's Nano Banana image ge
 
 **Use ONLY these exact model strings. Do not invent, guess, or add date suffixes.**
 
-| Model String (use exactly) | Alias | Use Case |
-|---------------------------|-------|----------|
-| `gemini-2.5-flash-image` | Nano Banana | Fast iterations, drafts, high volume |
-| `gemini-3-pro-image-preview` | Nano Banana Pro | Quality output, text rendering, 2K |
+| Model String (use exactly)   | Alias           | Use Case                             |
+| ---------------------------- | --------------- | ------------------------------------ |
+| `gemini-2.5-flash-image`     | Nano Banana     | Fast iterations, drafts, high volume |
+| `gemini-3-pro-image-preview` | Nano Banana Pro | Quality output, text rendering, 2K   |
 
 **Common mistakes to avoid:**
+
 - ❌ `gemini-2.5-flash-preview-05-20` — wrong, date suffixes are for text models
 - ❌ `gemini-2.5-pro-image` — wrong, 2.5 Pro doesn't do image generation
 - ❌ `gemini-3-flash-image` — wrong, doesn't exist
-- ❌ `gemini-pro-vision` — wrong, that's for image *input*, not generation
+- ❌ `gemini-pro-vision` — wrong, that's for image _input_, not generation
 
 **The only valid image generation models are `gemini-2.5-flash-image` and `gemini-3-pro-image-preview`.**
 
@@ -34,15 +35,16 @@ Build production-ready web applications powered by Google's Nano Banana image ge
 
 **Tested and compatible versions (as of January 2025):**
 
-| Package | Minimum Version | Recommended |
-|---------|-----------------|-------------|
-| `ai` | 3.4.0+ | `^4.0.0` |
-| `@ai-sdk/google` | 0.0.52+ | `^1.0.0` |
-| `@ai-sdk/react` | 0.0.62+ | `^1.0.0` |
-| `next` | 14.0.0+ | `^15.0.0` |
-| `react` | 18.2.0+ | `^19.0.0` |
+| Package          | Minimum Version | Recommended |
+| ---------------- | --------------- | ----------- |
+| `ai`             | 3.4.0+          | `^4.0.0`    |
+| `@ai-sdk/google` | 0.0.52+         | `^1.0.0`    |
+| `@ai-sdk/react`  | 0.0.62+         | `^1.0.0`    |
+| `next`           | 14.0.0+         | `^15.0.0`   |
+| `react`          | 18.2.0+         | `^19.0.0`   |
 
 **Important notes:**
+
 - This skill uses **Next.js App Router** (not Pages Router)
 - Server Actions require `'use server'` directive
 - All examples use **TypeScript** (recommended for type safety)
@@ -56,6 +58,7 @@ npm update ai @ai-sdk/google @ai-sdk/react
 ```
 
 **Breaking changes to watch:**
+
 - `result.files[0]` structure may change between major versions
 - `providerOptions.google` namespace for Gemini-specific configs
 - `useChat` hook API from `@ai-sdk/react`
@@ -67,6 +70,7 @@ npm update ai @ai-sdk/google @ai-sdk/react
 Nano Banana isn't just another image API—it's **conversational by design**. The core insight is that image generation works best as a dialogue, not a one-shot prompt.
 
 **Think of it as working with an AI art director**:
+
 - **Iterative refinement** → Build up images through conversation, not perfection in one prompt
 - **Context awareness** → The model "remembers" previous generations and edits
 - **Natural language editing** → Describe changes conversationally, not with parameters
@@ -90,13 +94,13 @@ Nano Banana isn't just another image API—it's **conversational by design**. Th
 
 Choose based on use case:
 
-| Use Case | Model | Why |
-|----------|-------|-----|
-| Rapid iterations, drafts | `gemini-2.5-flash-image` | Fast (2-5s), lower cost per image |
-| Final output, quality | `gemini-3-pro-image-preview` | Superior quality, thinking, text rendering |
-| Text-heavy images | `gemini-3-pro-image-preview` | Best typography, 2K resolution |
-| Multi-turn editing | Either | Both support conversational editing |
-| High volume | `gemini-2.5-flash-image` | Lower cost, faster throughput |
+| Use Case                 | Model                        | Why                                        |
+| ------------------------ | ---------------------------- | ------------------------------------------ |
+| Rapid iterations, drafts | `gemini-2.5-flash-image`     | Fast (2-5s), lower cost per image          |
+| Final output, quality    | `gemini-3-pro-image-preview` | Superior quality, thinking, text rendering |
+| Text-heavy images        | `gemini-3-pro-image-preview` | Best typography, 2K resolution             |
+| Multi-turn editing       | Either                       | Both support conversational editing        |
+| High volume              | `gemini-2.5-flash-image`     | Lower cost, faster throughput              |
 
 ---
 
@@ -106,24 +110,24 @@ Choose based on use case:
 
 ```typescript
 // app/actions/generate.ts
-'use server'
+"use server";
 
-import { google } from '@ai-sdk/google'
-import { generateText } from 'ai'
+import { google } from "@ai-sdk/google";
+import { generateText } from "ai";
 
 export async function generateImage(prompt: string) {
   const result = await generateText({
-    model: google('gemini-2.5-flash-image'),
+    model: google("gemini-2.5-flash-image"),
     prompt,
     providerOptions: {
       google: {
-        responseModalities: ['IMAGE'],
-        imageConfig: { aspectRatio: '16:9' }
-      }
-    }
-  })
+        responseModalities: ["IMAGE"],
+        imageConfig: { aspectRatio: "16:9" },
+      },
+    },
+  });
 
-  return result.files[0] // { base64, uint8Array, mediaType }
+  return result.files[0]; // { base64, uint8Array, mediaType }
 }
 ```
 
@@ -179,6 +183,7 @@ export function ImageGenerator() {
 ```
 
 **Example:**
+
 ```
 "A cyberpunk samurai warrior, digital art style, neon city background,
 intricate armor details, highly detailed, professional quality, 4K resolution,
@@ -187,13 +192,13 @@ cinematic lighting, no blurry elements"
 
 ### Quality Boosters (append to improve output)
 
-| Category | Boosters |
-|----------|----------|
-| **Resolution** | `4K`, `8K`, `high resolution`, `ultra detailed` |
-| **Quality** | `professional quality`, `masterpiece`, `highly detailed` |
-| **Lighting** | `cinematic lighting`, `studio lighting`, `golden hour`, `dramatic shadows` |
-| **Style** | `photorealistic`, `digital art`, `oil painting`, `watercolor`, `anime style` |
-| **Composition** | `centered`, `rule of thirds`, `wide angle`, `close-up`, `bird's eye view` |
+| Category        | Boosters                                                                     |
+| --------------- | ---------------------------------------------------------------------------- |
+| **Resolution**  | `4K`, `8K`, `high resolution`, `ultra detailed`                              |
+| **Quality**     | `professional quality`, `masterpiece`, `highly detailed`                     |
+| **Lighting**    | `cinematic lighting`, `studio lighting`, `golden hour`, `dramatic shadows`   |
+| **Style**       | `photorealistic`, `digital art`, `oil painting`, `watercolor`, `anime style` |
+| **Composition** | `centered`, `rule of thirds`, `wide angle`, `close-up`, `bird's eye view`    |
 
 ### Prompt Enhancer Utility
 
@@ -202,72 +207,78 @@ cinematic lighting, no blurry elements"
 export function enhancePrompt(
   basePrompt: string,
   options?: {
-    style?: 'photorealistic' | 'digital-art' | 'anime' | 'oil-painting'
-    quality?: 'standard' | 'high' | 'ultra'
-    lighting?: string
-  }
+    style?: "photorealistic" | "digital-art" | "anime" | "oil-painting";
+    quality?: "standard" | "high" | "ultra";
+    lighting?: string;
+  },
 ) {
-  const { style, quality = 'high', lighting } = options ?? {}
+  const { style, quality = "high", lighting } = options ?? {};
 
   const qualityMap = {
-    standard: '',
-    high: ', highly detailed, professional quality',
-    ultra: ', highly detailed, professional quality, 4K resolution, masterpiece'
-  }
+    standard: "",
+    high: ", highly detailed, professional quality",
+    ultra:
+      ", highly detailed, professional quality, 4K resolution, masterpiece",
+  };
 
   const styleMap = {
-    'photorealistic': ', photorealistic, hyperrealistic',
-    'digital-art': ', digital art, concept art',
-    'anime': ', anime style, cel shaded',
-    'oil-painting': ', oil painting, brush strokes visible'
-  }
+    photorealistic: ", photorealistic, hyperrealistic",
+    "digital-art": ", digital art, concept art",
+    anime: ", anime style, cel shaded",
+    "oil-painting": ", oil painting, brush strokes visible",
+  };
 
-  let enhanced = basePrompt
-  if (style) enhanced += styleMap[style]
-  enhanced += qualityMap[quality]
-  if (lighting) enhanced += `, ${lighting} lighting`
+  let enhanced = basePrompt;
+  if (style) enhanced += styleMap[style];
+  enhanced += qualityMap[quality];
+  if (lighting) enhanced += `, ${lighting} lighting`;
 
-  return enhanced
+  return enhanced;
 }
 
 // Usage
-const prompt = enhancePrompt('A dragon flying over mountains', {
-  style: 'digital-art',
-  quality: 'ultra',
-  lighting: 'dramatic sunset'
-})
+const prompt = enhancePrompt("A dragon flying over mountains", {
+  style: "digital-art",
+  quality: "ultra",
+  lighting: "dramatic sunset",
+});
 // Output: "A dragon flying over mountains, digital art, concept art, highly detailed, professional quality, 4K resolution, masterpiece, dramatic sunset lighting"
 ```
 
 ### Negative Prompts (what to avoid)
 
 Tell the model what NOT to include:
+
 ```typescript
 const prompt = `A beautiful sunset landscape, highly detailed.
-Avoid: blurry, low quality, distorted, watermark, text overlay`
+Avoid: blurry, low quality, distorted, watermark, text overlay`;
 ```
 
 ### Prompt Templates by Use Case
 
 **Product Photography:**
+
 ```
 "[Product] on white background, studio lighting, product photography,
 commercial quality, clean composition, no shadows"
 ```
 
 **Character Portrait:**
+
 ```
 "Portrait of [character description], [art style], detailed face,
 expressive eyes, [mood] expression, professional lighting"
 ```
 
 **Logo/Icon:**
+
 ```
 "Minimalist logo for [brand/concept], flat design, vector style,
 clean lines, [color scheme], scalable, modern"
 ```
 
 **Meme/Social:**
+
 ```
 "[Scene description], meme format, bold text ready,
 humorous, viral style, high contrast"
@@ -278,6 +289,7 @@ humorous, viral style, high contrast"
 ## Advanced Implementation
 
 For complete implementations including:
+
 - **Server Actions** with model selection, storage, and error handling
 - **API Routes** with streaming responses
 - **Client Components** with iterative editing and galleries
@@ -295,95 +307,104 @@ See **references/advanced-patterns.md**
 
 ```typescript
 // app/actions/generate.ts
-'use server'
+"use server";
 
-import { google } from '@ai-sdk/google'
-import { generateText } from 'ai'
+import { google } from "@ai-sdk/google";
+import { generateText } from "ai";
 
 export async function generateImageSafe(prompt: string) {
   const result = await generateText({
-    model: google('gemini-2.5-flash-image'),
+    model: google("gemini-2.5-flash-image"),
     prompt,
     providerOptions: {
       google: {
-        responseModalities: ['IMAGE'],
+        responseModalities: ["IMAGE"],
         // Safety settings - adjust based on your use case
         safetySettings: [
           {
-            category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+            category: "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE",
           },
           {
-            category: 'HARM_CATEGORY_HATE_SPEECH',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+            category: "HARM_CATEGORY_HATE_SPEECH",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE",
           },
           {
-            category: 'HARM_CATEGORY_HARASSMENT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+            category: "HARM_CATEGORY_HARASSMENT",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE",
           },
           {
-            category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          }
-        ]
-      }
-    }
-  })
+            category: "HARM_CATEGORY_DANGEROUS_CONTENT",
+            threshold: "BLOCK_MEDIUM_AND_ABOVE",
+          },
+        ],
+      },
+    },
+  });
 
-  return result.files[0]
+  return result.files[0];
 }
 ```
 
 ### Safety Threshold Options
 
-| Threshold | Description |
-|-----------|-------------|
-| `BLOCK_NONE` | No blocking (not recommended for public apps) |
-| `BLOCK_LOW_AND_ABOVE` | Most restrictive, blocks low probability harmful content |
-| `BLOCK_MEDIUM_AND_ABOVE` | **Recommended default** |
-| `BLOCK_ONLY_HIGH` | Less restrictive, only blocks high probability content |
+| Threshold                | Description                                              |
+| ------------------------ | -------------------------------------------------------- |
+| `BLOCK_NONE`             | No blocking (not recommended for public apps)            |
+| `BLOCK_LOW_AND_ABOVE`    | Most restrictive, blocks low probability harmful content |
+| `BLOCK_MEDIUM_AND_ABOVE` | **Recommended default**                                  |
+| `BLOCK_ONLY_HIGH`        | Less restrictive, only blocks high probability content   |
 
 ### Pre-Generation Prompt Filtering
 
 ```typescript
 // lib/content-filter.ts
 const BLOCKED_TERMS = [
-  'nude', 'naked', 'nsfw', 'explicit',
-  'violence', 'gore', 'blood',
-  'hate', 'slur', // Add your blocklist
-]
+  "nude",
+  "naked",
+  "nsfw",
+  "explicit",
+  "violence",
+  "gore",
+  "blood",
+  "hate",
+  "slur", // Add your blocklist
+];
 
 const SUSPICIOUS_PATTERNS = [
   /child(ren)?.*nude/i,
   /gore.*detail/i,
   // Add regex patterns
-]
+];
 
-export function isPromptSafe(prompt: string): { safe: boolean; reason?: string } {
-  const lowerPrompt = prompt.toLowerCase()
+export function isPromptSafe(prompt: string): {
+  safe: boolean;
+  reason?: string;
+} {
+  const lowerPrompt = prompt.toLowerCase();
 
   // Check blocked terms
   for (const term of BLOCKED_TERMS) {
     if (lowerPrompt.includes(term)) {
-      return { safe: false, reason: `Blocked term detected: ${term}` }
+      return { safe: false, reason: `Blocked term detected: ${term}` };
     }
   }
 
   // Check suspicious patterns
   for (const pattern of SUSPICIOUS_PATTERNS) {
     if (pattern.test(prompt)) {
-      return { safe: false, reason: 'Suspicious content pattern detected' }
+      return { safe: false, reason: "Suspicious content pattern detected" };
     }
   }
 
-  return { safe: true }
+  return { safe: true };
 }
 
 // Usage in server action
 export async function generateImage(prompt: string) {
-  const { safe, reason } = isPromptSafe(prompt)
+  const { safe, reason } = isPromptSafe(prompt);
   if (!safe) {
-    throw new Error(`Content policy violation: ${reason}`)
+    throw new Error(`Content policy violation: ${reason}`);
   }
 
   // Proceed with generation...
@@ -454,6 +475,7 @@ export function SafetyMessage({ error }: { error: string }) {
 ## Configuration & Operations
 
 For detailed configuration and operational concerns:
+
 - **Provider Options** (responseModalities, imageConfig, thinkingConfig)
 - **Storage Strategy** (Vercel Blob, S3/R2 implementations)
 - **Rate Limiting** (Upstash Redis patterns, quota management)
@@ -508,18 +530,21 @@ Better: Debounce prompts, require explicit action
 **IMPORTANT**: Every app should feel uniquely designed for its specific purpose.
 
 **Vary across dimensions**:
+
 - **UI Style**: Minimal, brutalist, playful, professional, dark, light
 - **Color Scheme**: Warm, cool, monochrome, vibrant, muted
 - **Layout**: Single page, multi-step wizard, sidebar, grid, list
 - **Interaction**: Click-to-generate, drag-and-drop, real-time typing, batch
 
 **Avoid overused patterns**:
+
 - ❌ Default Tailwind purple gradients
 - ❌ Generic "AI startup" aesthetic
 - ❌ Same component libraries for every project
 - ❌ Inter/Roboto fonts without thought
 
 **Context should drive design**:
+
 - **Meme generator** → Bold, fun, casual
 - **Product mockup tool** → Clean, professional, grid-based
 - **Art exploration** → Gallery-first, visual-heavy
@@ -562,6 +587,7 @@ npm install google-genai
 **Nano Banana enables conversational image generation that feels like working with a creative partner, not a tool.**
 
 The best apps:
+
 - Leverage multi-turn editing for refinement
 - Choose models intentionally (speed vs quality)
 - Handle rate limits gracefully

@@ -8,51 +8,50 @@ Complete implementations for production-ready Nano Banana web applications.
 
 ```typescript
 // app/actions/generate.ts
-'use server'
+"use server";
 
-import { google } from '@ai-sdk/google'
-import { generateText } from 'ai'
-import { put } from '@vercel/blob'
+import { google } from "@ai-sdk/google";
+import { generateText } from "ai";
+import { put } from "@vercel/blob";
 
 interface GenerateConfig {
-  prompt: string
-  model: 'nano' | 'pro'
-  aspectRatio?: '1:1' | '16:9' | '21:9'
-  storeImage?: boolean
+  prompt: string;
+  model: "nano" | "pro";
+  aspectRatio?: "1:1" | "16:9" | "21:9";
+  storeImage?: boolean;
 }
 
 export async function generateImage(config: GenerateConfig) {
-  const { prompt, model, aspectRatio = '1:1', storeImage = true } = config
+  const { prompt, model, aspectRatio = "1:1", storeImage = true } = config;
 
-  const modelName = model === 'pro'
-    ? 'gemini-3-pro-image-preview'
-    : 'gemini-2.5-flash-image'
+  const modelName =
+    model === "pro" ? "gemini-3-pro-image-preview" : "gemini-2.5-flash-image";
 
   const result = await generateText({
     model: google(modelName),
     prompt,
     providerOptions: {
       google: {
-        responseModalities: ['IMAGE'],
+        responseModalities: ["IMAGE"],
         imageConfig: {
           aspectRatio,
-          ...(model === 'pro' && { imageSize: '2K' })
-        }
-      }
-    }
-  })
+          ...(model === "pro" && { imageSize: "2K" }),
+        },
+      },
+    },
+  });
 
-  const imageFile = result.files[0]
+  const imageFile = result.files[0];
 
   if (storeImage && imageFile?.base64) {
-    const buffer = Buffer.from(imageFile.base64, 'base64')
+    const buffer = Buffer.from(imageFile.base64, "base64");
     const blob = await put(`generated/${Date.now()}.png`, buffer, {
-      access: 'public'
-    })
-    return { url: blob.url, base64: imageFile.base64 }
+      access: "public",
+    });
+    return { url: blob.url, base64: imageFile.base64 };
   }
 
-  return { url: `data:${imageFile.mediaType};base64,${imageFile.base64}` }
+  return { url: `data:${imageFile.mediaType};base64,${imageFile.base64}` };
 }
 ```
 
@@ -60,50 +59,56 @@ export async function generateImage(config: GenerateConfig) {
 
 ```typescript
 // app/actions/edit.ts
-'use server'
+"use server";
 
-import { google } from '@ai-sdk/google'
-import { generateText } from 'ai'
+import { google } from "@ai-sdk/google";
+import { generateText } from "ai";
 
 interface EditConfig {
-  imageBase64: string
-  editPrompt: string
-  model: 'nano' | 'pro'
-  history?: Array<{role: string; content: any}>
+  imageBase64: string;
+  editPrompt: string;
+  model: "nano" | "pro";
+  history?: Array<{ role: string; content: any }>;
 }
 
 export async function editImage(config: EditConfig) {
-  const { imageBase64, editPrompt, model, history = [] } = config
+  const { imageBase64, editPrompt, model, history = [] } = config;
 
-  const modelName = model === 'pro'
-    ? 'gemini-3-pro-image-preview'
-    : 'gemini-2.5-flash-image'
+  const modelName =
+    model === "pro" ? "gemini-3-pro-image-preview" : "gemini-2.5-flash-image";
 
   // Build conversation with image as first message
   const contents = [
-    { role: 'user', content: [
-      { type: 'image', image: imageBase64 },
-      { type: 'text', text: editPrompt }
-    ]}
-  ]
+    {
+      role: "user",
+      content: [
+        { type: "image", image: imageBase64 },
+        { type: "text", text: editPrompt },
+      ],
+    },
+  ];
 
   const result = await generateText({
     model: google(modelName),
     messages: [...history, ...contents],
     providerOptions: {
       google: {
-        responseModalities: ['IMAGE']
-      }
-    }
-  })
+        responseModalities: ["IMAGE"],
+      },
+    },
+  });
 
   return {
     url: `data:${result.files[0].mediaType};base64,${result.files[0].base64}`,
-    newHistory: [...history, ...contents, {
-      role: 'assistant',
-      content: result.files[0]
-    }]
-  }
+    newHistory: [
+      ...history,
+      ...contents,
+      {
+        role: "assistant",
+        content: result.files[0],
+      },
+    ],
+  };
 }
 ```
 
@@ -111,25 +116,27 @@ export async function editImage(config: EditConfig) {
 
 ```typescript
 // app/api/generate/route.ts
-import { google } from '@ai-sdk/google'
-import { streamText } from 'ai'
+import { google } from "@ai-sdk/google";
+import { streamText } from "ai";
 
-export const maxDuration = 30
+export const maxDuration = 30;
 
 export async function POST(req: Request) {
-  const { prompt, model = 'nano' } = await req.json()
+  const { prompt, model = "nano" } = await req.json();
 
   const result = streamText({
-    model: google(model === 'pro' ? 'gemini-3-pro-image-preview' : 'gemini-2.5-flash-image'),
+    model: google(
+      model === "pro" ? "gemini-3-pro-image-preview" : "gemini-2.5-flash-image",
+    ),
     prompt,
     providerOptions: {
       google: {
-        responseModalities: ['IMAGE', 'TEXT']
-      }
-    }
-  })
+        responseModalities: ["IMAGE", "TEXT"],
+      },
+    },
+  });
 
-  return result.toDataStreamResponse()
+  return result.toDataStreamResponse();
 }
 ```
 
@@ -326,29 +333,28 @@ export function IterativeEditor() {
 
 ```typescript
 // Combine multiple images into one generation
-export async function compositeImages(
-  images: string[],
-  prompt: string
-) {
-  const imageParts = images.map(img => ({
+export async function compositeImages(images: string[], prompt: string) {
+  const imageParts = images.map((img) => ({
     inlineData: {
-      mimeType: 'image/png',
-      data: img.split(',')[1]
-    }
-  }))
+      mimeType: "image/png",
+      data: img.split(",")[1],
+    },
+  }));
 
   const result = await generateText({
-    model: google('gemini-3-pro-image-preview'),
-    messages: [{
-      role: 'user',
-      content: [...imageParts, { text: prompt }]
-    }],
+    model: google("gemini-3-pro-image-preview"),
+    messages: [
+      {
+        role: "user",
+        content: [...imageParts, { text: prompt }],
+      },
+    ],
     providerOptions: {
-      google: { responseModalities: ['IMAGE'] }
-    }
-  })
+      google: { responseModalities: ["IMAGE"] },
+    },
+  });
 
-  return result.files[0]
+  return result.files[0];
 }
 ```
 
@@ -358,21 +364,21 @@ export async function compositeImages(
 // app/actions/batch.ts
 export async function generateBatch(
   prompts: string[],
-  onProgress?: (current: number, total: number) => void
+  onProgress?: (current: number, total: number) => void,
 ) {
-  const results = []
+  const results = [];
 
   for (let i = 0; i < prompts.length; i++) {
     const result = await generateImage({
       prompt: prompts[i],
-      model: 'nano',
-      storeImage: true
-    })
-    results.push(result)
-    onProgress?.(i + 1, prompts.length)
+      model: "nano",
+      storeImage: true,
+    });
+    results.push(result);
+    onProgress?.(i + 1, prompts.length);
   }
 
-  return results
+  return results;
 }
 ```
 
@@ -384,18 +390,18 @@ export async function generateProgressive(prompt: string) {
   // Fast preview
   const preview = await generateImage({
     prompt,
-    model: 'nano',
-    storeImage: false
-  })
+    model: "nano",
+    storeImage: false,
+  });
 
   // High-res final
   const final = await generateImage({
     prompt,
-    model: 'pro',
-    storeImage: true
-  })
+    model: "pro",
+    storeImage: true,
+  });
 
-  return { preview, final }
+  return { preview, final };
 }
 ```
 
@@ -439,14 +445,14 @@ export function ImageGallery() {
 // app/actions/generate.ts
 export async function generateImageWithRetry(
   config: GenerateConfig,
-  maxRetries = 3
+  maxRetries = 3,
 ) {
   for (let i = 0; i < maxRetries; i++) {
     try {
-      return await generateImage(config)
+      return await generateImage(config);
     } catch (error) {
-      if (i === maxRetries - 1) throw error
-      await new Promise(r => setTimeout(r, 1000 * (i + 1)))
+      if (i === maxRetries - 1) throw error;
+      await new Promise((r) => setTimeout(r, 1000 * (i + 1)));
     }
   }
 }

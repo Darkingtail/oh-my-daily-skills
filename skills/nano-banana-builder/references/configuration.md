@@ -16,6 +16,7 @@ providerOptions: {
 ```
 
 **When to use each**:
+
 - `['IMAGE']` - When you only need images, saves token costs
 - `['TEXT', 'IMAGE']` - When you want both descriptions and images
 
@@ -34,13 +35,13 @@ providerOptions: {
 
 ### Aspect Ratio Guide
 
-| Ratio | Resolution | Best For | Token Cost |
-|-------|-----------|----------|------------|
-| 1:1 | 1024×1024 | Icons, squares, Instagram | Lowest |
-| 16:9 | 1344×768 | YouTube thumbnails, widescreen | Medium |
-| 21:9 | 1536×672 | Cinematic, ultra-wide | Higher |
-| 4:3 | 1184×864 | Presentations, standard | Medium |
-| 9:16 | 768×1344 | TikTok, Reels, Stories | Medium |
+| Ratio | Resolution | Best For                       | Token Cost |
+| ----- | ---------- | ------------------------------ | ---------- |
+| 1:1   | 1024×1024  | Icons, squares, Instagram      | Lowest     |
+| 16:9  | 1344×768   | YouTube thumbnails, widescreen | Medium     |
+| 21:9  | 1536×672   | Cinematic, ultra-wide          | Higher     |
+| 4:3   | 1184×864   | Presentations, standard        | Medium     |
+| 9:16  | 768×1344   | TikTok, Reels, Stories         | Medium     |
 
 ### Thinking Configuration (Pro Only)
 
@@ -56,6 +57,7 @@ providerOptions: {
 ```
 
 **Thinking Budget Guidelines**:
+
 - `4096` - Quick generations, simple prompts
 - `8192` - Default balance
 - `16384` - Complex compositions, detailed edits
@@ -69,49 +71,38 @@ providerOptions: {
 
 ```typescript
 // lib/storage/vercel-blob.ts
-import { put } from '@vercel/blob'
+import { put } from "@vercel/blob";
 
-export async function storeImage(
-  imageBase64: string,
-  userId: string
-) {
-  const buffer = Buffer.from(imageBase64, 'base64')
+export async function storeImage(imageBase64: string, userId: string) {
+  const buffer = Buffer.from(imageBase64, "base64");
 
-  const blob = await put(
-    `images/${userId}/${Date.now()}.png`,
-    buffer,
-    {
-      access: 'public',
-      token: process.env.BLOB_READ_WRITE_TOKEN
-    }
-  )
+  const blob = await put(`images/${userId}/${Date.now()}.png`, buffer, {
+    access: "public",
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+  });
 
-  return blob.url
+  return blob.url;
 }
 
 export async function storeImageWithMetadata(
   imageBase64: string,
   userId: string,
-  metadata: { prompt: string; model: string }
+  metadata: { prompt: string; model: string },
 ) {
-  const buffer = Buffer.from(imageBase64, 'base64')
-  const filename = `${Date.now()}-${metadata.model}.png`
+  const buffer = Buffer.from(imageBase64, "base64");
+  const filename = `${Date.now()}-${metadata.model}.png`;
 
-  const blob = await put(
-    `images/${userId}/${filename}`,
-    buffer,
-    {
-      access: 'public',
-      token: process.env.BLOB_READ_WRITE_TOKEN,
-      addMetadata: {
-        prompt: metadata.prompt,
-        model: metadata.model,
-        createdAt: new Date().toISOString()
-      }
-    }
-  )
+  const blob = await put(`images/${userId}/${filename}`, buffer, {
+    access: "public",
+    token: process.env.BLOB_READ_WRITE_TOKEN,
+    addMetadata: {
+      prompt: metadata.prompt,
+      model: metadata.model,
+      createdAt: new Date().toISOString(),
+    },
+  });
 
-  return { url: blob.url, filename }
+  return { url: blob.url, filename };
 }
 ```
 
@@ -119,48 +110,47 @@ export async function storeImageWithMetadata(
 
 ```typescript
 // lib/storage/s3.ts
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3'
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const s3 = new S3Client({
-  region: 'auto',
+  region: "auto",
   endpoint: process.env.S3_ENDPOINT,
   credentials: {
     accessKeyId: process.env.S3_ACCESS_KEY_ID!,
-    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!
-  }
-})
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY!,
+  },
+});
 
-export async function storeImageS3(
-  imageBase64: string,
-  userId: string
-) {
-  const buffer = Buffer.from(imageBase64, 'base64')
-  const key = `${userId}/${Date.now()}.png`
+export async function storeImageS3(imageBase64: string, userId: string) {
+  const buffer = Buffer.from(imageBase64, "base64");
+  const key = `${userId}/${Date.now()}.png`;
 
-  await s3.send(new PutObjectCommand({
-    Bucket: process.env.S3_BUCKET,
-    Key: key,
-    Body: buffer,
-    ContentType: 'image/png',
-    Metadata: {
-      createdAt: new Date().toISOString()
-    }
-  }))
+  await s3.send(
+    new PutObjectCommand({
+      Bucket: process.env.S3_BUCKET,
+      Key: key,
+      Body: buffer,
+      ContentType: "image/png",
+      Metadata: {
+        createdAt: new Date().toISOString(),
+      },
+    }),
+  );
 
-  return `${process.env.S3_PUBLIC_URL}/${key}`
+  return `${process.env.S3_PUBLIC_URL}/${key}`;
 }
 
 // With presigned URLs for private access
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import { GetObjectCommand } from '@aws-sdk/client-s3'
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { GetObjectCommand } from "@aws-sdk/client-s3";
 
 export async function getPrivateImageURL(key: string) {
   const command = new GetObjectCommand({
     Bucket: process.env.S3_BUCKET,
-    Key: key
-  })
+    Key: key,
+  });
 
-  return await getSignedUrl(s3, command, { expiresIn: 3600 })
+  return await getSignedUrl(s3, command, { expiresIn: 3600 });
 }
 ```
 
@@ -168,8 +158,8 @@ export async function getPrivateImageURL(key: string) {
 
 ```typescript
 // Only for development - do not use in production
-export function base64DataURL(base64: string, mediaType = 'image/png') {
-  return `data:${mediaType};base64,${base64}`
+export function base64DataURL(base64: string, mediaType = "image/png") {
+  return `data:${mediaType};base64,${base64}`;
 }
 ```
 
@@ -180,15 +170,18 @@ export function base64DataURL(base64: string, mediaType = 'image/png') {
 ### Understanding Quotas
 
 **Free Tier:**
+
 - Nano Banana: ~100 RPD (requests per day), 15 RPM (requests per minute)
 - Nano Banana Pro: ~10 RPD, 5-10 RPM
 
 **Paid Tier (varies by spend):**
+
 - Tier 1: 500+ RPM
 - Tier 2: 1,000+ RPM
 - Tier 3: 2,000+ RPM
 
 **Cost Estimates:**
+
 - ~1,290 tokens per image (varies by complexity)
 - ~$0.039 per image (varies by model and region)
 
@@ -196,36 +189,36 @@ export function base64DataURL(base64: string, mediaType = 'image/png') {
 
 ```typescript
 // lib/rate-limit.ts
-import { Ratelimit } from '@upstash/ratelimit'
-import { Redis } from '@upstash/redis'
+import { Ratelimit } from "@upstash/ratelimit";
+import { Redis } from "@upstash/redis";
 
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(10, '1 m'), // 10 requests per minute
+  limiter: Ratelimit.slidingWindow(10, "1 m"), // 10 requests per minute
   analytics: true,
-  prefix: 'nano-banana'
-})
+  prefix: "nano-banana",
+});
 
 export async function checkRateLimit(userId: string) {
-  const { success, limit, reset, remaining } = await ratelimit.limit(userId)
+  const { success, limit, reset, remaining } = await ratelimit.limit(userId);
 
   if (!success) {
     throw new Error(
       `Rate limited. Resets at ${new Date(reset).toISOString()}. ` +
-      `Please wait before generating more images.`
-    )
+        `Please wait before generating more images.`,
+    );
   }
 
-  return { limit, remaining }
+  return { limit, remaining };
 }
 
 // Usage in server action
 export async function generateImage(config: GenerateConfig) {
   // Get user ID from session
-  const userId = await getUserId()
+  const userId = await getUserId();
 
   // Check rate limit
-  await checkRateLimit(userId)
+  await checkRateLimit(userId);
 
   // Proceed with generation...
 }
@@ -238,71 +231,77 @@ export async function generateImage(config: GenerateConfig) {
 // Simple in-memory rate limiter for development
 
 interface RateLimitEntry {
-  count: number
-  resetAt: number
+  count: number;
+  resetAt: number;
 }
 
-const limits = new Map<string, RateLimitEntry>()
+const limits = new Map<string, RateLimitEntry>();
 
 export function checkRateLimitMemory(
   userId: string,
   maxRequests = 10,
-  windowMs = 60000
+  windowMs = 60000,
 ) {
-  const now = Date.now()
-  const entry = limits.get(userId)
+  const now = Date.now();
+  const entry = limits.get(userId);
 
   if (!entry || now > entry.resetAt) {
-    limits.set(userId, { count: 1, resetAt: now + windowMs })
-    return { allowed: true, remaining: maxRequests - 1 }
+    limits.set(userId, { count: 1, resetAt: now + windowMs });
+    return { allowed: true, remaining: maxRequests - 1 };
   }
 
   if (entry.count >= maxRequests) {
     return {
       allowed: false,
       resetAt: entry.resetAt,
-      remaining: 0
-    }
+      remaining: 0,
+    };
   }
 
-  entry.count++
-  return { allowed: true, remaining: maxRequests - entry.count }
+  entry.count++;
+  return { allowed: true, remaining: maxRequests - entry.count };
 }
 ```
 
 ### Cost Optimization Strategies
 
 1. **Use Nano for iterations, Pro for final output**
+
    ```typescript
    // Quick iteration
-   const draft = await generateImage({ prompt, model: 'nano' })
+   const draft = await generateImage({ prompt, model: "nano" });
 
    // Final quality
-   const final = await generateImage({ prompt, model: 'pro' })
+   const final = await generateImage({ prompt, model: "pro" });
    ```
 
 2. **Set `responseModalities: ['IMAGE']`** to save text tokens
+
    ```typescript
    providerOptions: {
-     google: { responseModalities: ['IMAGE'] }
+     google: {
+       responseModalities: ["IMAGE"];
+     }
    }
    ```
 
 3. **Cache similar prompts** with deduplication
+
    ```typescript
-   const cacheKey = `img:${hash(prompt + model + aspectRatio)}`
-   const cached = await redis.get(cacheKey)
+   const cacheKey = `img:${hash(prompt + model + aspectRatio)}`;
+   const cached = await redis.get(cacheKey);
 
-   if (cached) return { url: cached }
+   if (cached) return { url: cached };
 
-   const result = await generateImage(config)
-   await redis.setex(cacheKey, 86400, result.url)
+   const result = await generateImage(config);
+   await redis.setex(cacheKey, 86400, result.url);
    ```
 
 4. **Implement queue system** for high-volume scenarios
+
    ```typescript
    // Background job queue
-   await queue.add('generate-image', { prompt, model, userId })
+   await queue.add("generate-image", { prompt, model, userId });
    ```
 
 5. **Use appropriate aspect ratios** (1:1 = fewest tokens)
@@ -319,51 +318,51 @@ export class NanoBananaError extends Error {
   constructor(
     message: string,
     public code: string,
-    public retryable: boolean = false
+    public retryable: boolean = false,
   ) {
-    super(message)
-    this.name = 'NanoBananaError'
+    super(message);
+    this.name = "NanoBananaError";
   }
 }
 
 export function handleNanoBananaError(error: any) {
   // Rate limit exceeded
-  if (error.message?.includes('429')) {
+  if (error.message?.includes("429")) {
     throw new NanoBananaError(
-      'Too many requests. Please wait a moment.',
-      'RATE_LIMIT',
-      true
-    )
+      "Too many requests. Please wait a moment.",
+      "RATE_LIMIT",
+      true,
+    );
   }
 
   // Invalid API key
-  if (error.message?.includes('401')) {
+  if (error.message?.includes("401")) {
     throw new NanoBananaError(
-      'Invalid API key. Check your configuration.',
-      'INVALID_KEY',
-      false
-    )
+      "Invalid API key. Check your configuration.",
+      "INVALID_KEY",
+      false,
+    );
   }
 
   // Content policy violation
-  if (error.message?.includes('400')) {
+  if (error.message?.includes("400")) {
     throw new NanoBananaError(
-      'Image generation blocked. Please modify your prompt.',
-      'CONTENT_POLICY',
-      false
-    )
+      "Image generation blocked. Please modify your prompt.",
+      "CONTENT_POLICY",
+      false,
+    );
   }
 
   // Network errors
-  if (error.code === 'ECONNREFUSED') {
+  if (error.code === "ECONNREFUSED") {
     throw new NanoBananaError(
-      'Connection failed. Please check your internet.',
-      'NETWORK_ERROR',
-      true
-    )
+      "Connection failed. Please check your internet.",
+      "NETWORK_ERROR",
+      true,
+    );
   }
 
-  throw error
+  throw error;
 }
 ```
 

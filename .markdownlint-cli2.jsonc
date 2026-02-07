@@ -1,0 +1,24 @@
+{
+  // markdownlint-cli2 configuration for oh-my-daily-skills
+  "config": {
+    // Disable line-length: tables and CJK text make fixed width impractical
+    "MD013": false,
+    // Disable first-line-heading: SKILL.md files start with YAML frontmatter
+    "MD041": false,
+    // Disable table-column-style: prettier handles table formatting
+    "MD060": false,
+    // Disable emphasis-as-heading: common pattern in CJK docs
+    "MD036": false,
+    // Allow inline HTML (badges, details/summary, etc.)
+    "MD033": false,
+    // Disable fenced-code-language: many blocks are plain text diagrams/trees
+    "MD040": false,
+    // Allow duplicate headings under different parents (common in reference docs)
+    "MD024": false
+  },
+  "ignores": [
+    "node_modules/**",
+    "examples/**",
+    ".claude-plugin/**"
+  ]
+}

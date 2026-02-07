@@ -26,12 +26,12 @@ jq --version || echo "MISSING"
 
 **Troubleshooting:**
 
-| Problem | Solution |
-|---------|----------|
-| `gh` not installed | macOS: `brew install gh`. Others: https://cli.github.com |
-| `gh` not logged in | `gh auth login -h github.com -p https -w` (opens browser) |
-| `user` scope missing | `gh auth refresh -s user -h github.com` |
-| `jq` not installed | macOS: `brew install jq`. Others: https://jqlang.github.io/jq/download |
+| Problem              | Solution                                                                 |
+| -------------------- | ------------------------------------------------------------------------ |
+| `gh` not installed   | macOS: `brew install gh`. Others: <https://cli.github.com>               |
+| `gh` not logged in   | `gh auth login -h github.com -p https -w` (opens browser)                |
+| `user` scope missing | `gh auth refresh -s user -h github.com`                                  |
+| `jq` not installed   | macOS: `brew install jq`. Others: <https://jqlang.github.io/jq/download> |
 
 All checks must pass before proceeding. The `user` scope is required for GitHub Lists API access.
 
@@ -39,10 +39,10 @@ All checks must pass before proceeding. The `user` scope is required for GitHub 
 
 All scripts are in `scripts/` relative to this skill's directory.
 
-| Script | Purpose |
-|--------|---------|
-| `fetch_stars.sh` | Fetch starred repos (paginated). Outputs one JSON object per line. |
-| `manage_lists.sh` | CRUD for GitHub Lists: `get`, `create`, `delete`, `add` |
+| Script            | Purpose                                                            |
+| ----------------- | ------------------------------------------------------------------ |
+| `fetch_stars.sh`  | Fetch starred repos (paginated). Outputs one JSON object per line. |
+| `manage_lists.sh` | CRUD for GitHub Lists: `get`, `create`, `delete`, `add`            |
 
 ## Modes
 
@@ -100,24 +100,24 @@ Analyze all repos and existing lists. Propose a categorization plan.
 
 Use these as a starting template for full batch mode. Adjust based on user's actual star composition — skip empty categories, merge small ones, split large ones (>40 repos).
 
-| Category | Description | Typical repos |
-|----------|-------------|---------------|
-| AI | LLMs, ML frameworks, AI apps, agents | langchain, ollama, stable-diffusion |
-| React | React ecosystem: frameworks, hooks, state management | next.js, react, zustand |
-| React Native | React Native core, navigation, UI libs | react-navigation, expo |
-| Vue | Vue ecosystem: frameworks, plugins, tools | nuxt, vueuse, element-plus |
-| Flutter | Flutter/Dart packages and apps | flutter, riverpod |
-| Mobile Native | iOS/Android native development | Kotlin/Swift libs, Jetpack |
-| WeChat | Mini programs, WeChat SDK, WePY | wepy, vant-weapp |
-| Backend | Server frameworks, databases, APIs | express, fastapi, prisma |
-| Build & DX | Bundlers, linters, dev tools, monorepo | vite, eslint, turborepo |
-| CLI & Tools | Desktop apps, CLI utilities, productivity | homebrew, raycast, warp |
-| UI & Design | Component libraries, CSS, animation | tailwindcss, shadcn, framer-motion |
-| Network & Proxy | HTTP clients, proxies, VPN, network tools | clash, axios, nginx |
-| DevOps & Docker | CI/CD, containers, infra, monitoring | docker, k8s, terraform |
-| Low-Code & Admin | Admin panels, low-code platforms, CMS | strapi, appsmith, refine |
-| Awesome & Learning | Curated lists, tutorials, books, courses | awesome-xxx, free-programming-books |
-| Misc | Repos that don't fit elsewhere | |
+| Category           | Description                                          | Typical repos                       |
+| ------------------ | ---------------------------------------------------- | ----------------------------------- |
+| AI                 | LLMs, ML frameworks, AI apps, agents                 | langchain, ollama, stable-diffusion |
+| React              | React ecosystem: frameworks, hooks, state management | next.js, react, zustand             |
+| React Native       | React Native core, navigation, UI libs               | react-navigation, expo              |
+| Vue                | Vue ecosystem: frameworks, plugins, tools            | nuxt, vueuse, element-plus          |
+| Flutter            | Flutter/Dart packages and apps                       | flutter, riverpod                   |
+| Mobile Native      | iOS/Android native development                       | Kotlin/Swift libs, Jetpack          |
+| WeChat             | Mini programs, WeChat SDK, WePY                      | wepy, vant-weapp                    |
+| Backend            | Server frameworks, databases, APIs                   | express, fastapi, prisma            |
+| Build & DX         | Bundlers, linters, dev tools, monorepo               | vite, eslint, turborepo             |
+| CLI & Tools        | Desktop apps, CLI utilities, productivity            | homebrew, raycast, warp             |
+| UI & Design        | Component libraries, CSS, animation                  | tailwindcss, shadcn, framer-motion  |
+| Network & Proxy    | HTTP clients, proxies, VPN, network tools            | clash, axios, nginx                 |
+| DevOps & Docker    | CI/CD, containers, infra, monitoring                 | docker, k8s, terraform              |
+| Low-Code & Admin   | Admin panels, low-code platforms, CMS                | strapi, appsmith, refine            |
+| Awesome & Learning | Curated lists, tutorials, books, courses             | awesome-xxx, free-programming-books |
+| Misc               | Repos that don't fit elsewhere                       |                                     |
 
 #### Category Guidelines
 

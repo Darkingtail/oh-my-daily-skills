@@ -9,6 +9,7 @@ This is a Claude Code plugin repository containing a collection of skills. Skill
 ## Skill Structure
 
 Each skill lives in `skills/<skill-name>/` with:
+
 - `SKILL.md` - Main skill file with YAML frontmatter
 - `references/` - Optional directory for advanced topics and supplementary documentation
 
@@ -26,19 +27,19 @@ metadata:
 ---
 ```
 
-| Field | Required | Description |
-|-------|----------|-------------|
-| name | Yes | 技能名称，格式 `prefix:skill-name` |
-| description | Yes | 单行描述，最大 1024 字符 |
-| compatibility | No | 环境要求（如 Docker、特定路径） |
-| metadata.version | Yes | 语义化版本号 |
+| Field            | Required | Description                        |
+| ---------------- | -------- | ---------------------------------- |
+| name             | Yes      | 技能名称，格式 `prefix:skill-name` |
+| description      | Yes      | 单行描述，最大 1024 字符           |
+| compatibility    | No       | 环境要求（如 Docker、特定路径）    |
+| metadata.version | Yes      | 语义化版本号                       |
 
 ### Naming Convention
 
-| Type | Directory | Name Prefix | Example |
-|------|-----------|-------------|---------|
-| General skill | `skill-name` | `tooyoung:` | `tooyoung:chainlit-builder` |
-| Personal skill | `_skill-name` | `personal:` | `personal:mac-docker` |
+| Type           | Directory     | Name Prefix | Example                     |
+| -------------- | ------------- | ----------- | --------------------------- |
+| General skill  | `skill-name`  | `tooyoung:` | `tooyoung:chainlit-builder` |
+| Personal skill | `_skill-name` | `personal:` | `personal:mac-docker`       |
 
 Personal skills (prefixed with `_`) contain environment-specific paths and configurations.
 

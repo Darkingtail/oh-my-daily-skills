@@ -1,0 +1,18 @@
+{
+  "name": "oh-my-daily-skills",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A collection of daily-use skills for Claude Code",
+  "scripts": {
+    "lint": "markdownlint-cli2 '**/*.md'",
+    "lint:fix": "markdownlint-cli2 --fix '**/*.md'",
+    "format": "prettier --write '**/*.md'",
+    "format:check": "prettier --check '**/*.md'",
+    "check": "npm run lint && npm run format:check"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "markdownlint-cli2": "^0.20.0",
+    "prettier": "^3.8.1"
+  }
+}

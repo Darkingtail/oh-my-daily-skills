@@ -14,6 +14,7 @@ _Inspired by: [state-of-the-art-shitcode](https://github.com/trekhleb/state-of-t
 ## When to Use
 
 Invoke this skill when the user says things like:
+
 - `/shitcode`
 - "Add some spice to this code"
 - "Make this code worse"
@@ -71,8 +72,8 @@ toggleModal(false);
 
 ```javascript
 // Shitcode
-let i = ['tomato', 'onion', 'mushrooms'];
-let d = [ "ketchup", "mayonnaise" ];
+let i = ["tomato", "onion", "mushrooms"];
+let d = ["ketchup", "mayonnaise"];
 ```
 
 ### 💩 Put everything on one line
@@ -80,16 +81,23 @@ let d = [ "ketchup", "mayonnaise" ];
 ```javascript
 // Clean code
 document.location.search
-  .replace(/(^\?)/, '')
-  .split('&')
+  .replace(/(^\?)/, "")
+  .split("&")
   .reduce((params, pair) => {
-    pair = pair.split('=');
+    pair = pair.split("=");
     params[pair[0]] = pair[1];
     return params;
   }, {});
 
 // Shitcode
-document.location.search.replace(/(^\?)/,'').split('&').reduce(function(o,n){n=n.split('=');o[n[0]]=n[1];return o},{})
+document.location.search
+  .replace(/(^\?)/, "")
+  .split("&")
+  .reduce(function (o, n) {
+    n = n.split("=");
+    o[n[0]] = n[1];
+    return o;
+  }, {});
 ```
 
 ### 💩 Fail silently
@@ -147,7 +155,7 @@ const guessWhat = sum([], {}); // -> "[object Object]" 🎉
 ```javascript
 // Shitcode
 function square(num) {
-  if (typeof num === 'undefined') {
+  if (typeof num === "undefined") {
     return undefined;
   } else {
     return num ** 2;
@@ -170,7 +178,7 @@ function someFunction() {
             }
           }
         }
-      })
+      });
     }
   }
 }
@@ -180,17 +188,14 @@ function someFunction() {
 
 ```javascript
 // Shitcode
-const fruits = ['apple',
-  'orange', 'grape', 'pineapple'];
-  const toppings = ['syrup', 'cream',
-                    'jam',
-                    'chocolate'];
+const fruits = ["apple", "orange", "grape", "pineapple"];
+const toppings = ["syrup", "cream", "jam", "chocolate"];
 const desserts = [];
-fruits.forEach(fruit => {
-toppings.forEach(topping => {
-    desserts.push([
-fruit,topping]);
-    });})
+fruits.forEach((fruit) => {
+  toppings.forEach((topping) => {
+    desserts.push([fruit, topping]);
+  });
+});
 ```
 
 ### 💩 Never lock dependencies

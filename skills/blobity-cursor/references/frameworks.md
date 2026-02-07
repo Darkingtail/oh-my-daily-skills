@@ -11,8 +11,8 @@ All templates include: touch device detection, light/dark theme switching, scrol
 ### useBlobity.ts
 
 ```tsx
-import { useEffect, useRef } from 'react';
-import Blobity from 'blobity';
+import { useEffect, useRef } from "react";
+import Blobity from "blobity";
 
 interface BlobityTheme {
   color: string;
@@ -21,15 +21,15 @@ interface BlobityTheme {
 }
 
 const darkTheme: BlobityTheme = {
-  color: '#ffffff',
-  dotColor: '#10b981',
-  fontColor: '#0d1117',
+  color: "#ffffff",
+  dotColor: "#10b981",
+  fontColor: "#0d1117",
 };
 
 const lightTheme: BlobityTheme = {
-  color: '#190a11',
-  dotColor: '#111827',
-  fontColor: '#000000',
+  color: "#190a11",
+  dotColor: "#111827",
+  fontColor: "#000000",
 };
 
 /**
@@ -39,7 +39,7 @@ const lightTheme: BlobityTheme = {
  * - media query: window.matchMedia('(prefers-color-scheme: dark)').matches
  */
 function isDark(): boolean {
-  return document.documentElement.getAttribute('data-theme') !== 'light';
+  return document.documentElement.getAttribute("data-theme") !== "light";
 }
 
 function getTheme(): BlobityTheme {
@@ -59,7 +59,7 @@ export function useBlobity(options?: {
   useEffect(() => {
     // Skip touch devices
     const isTouchDevice =
-      'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
     // Optional: only activate on specific pages
@@ -71,22 +71,22 @@ export function useBlobity(options?: {
     }
 
     // Prevent double init
-    if (document.body.classList.contains('blobity-active')) return;
+    if (document.body.classList.contains("blobity-active")) return;
 
     const theme = getTheme();
 
     const blobity = new Blobity({
-      licenseKey: 'opensource',
+      licenseKey: "opensource",
       invert: true,
       zIndex: 50,
       color: theme.color,
       dotColor: theme.dotColor,
       radius: 6,
       magnetic: false,
-      mode: 'normal',
+      mode: "normal",
       focusableElements:
         options?.focusableElements ??
-        'a, button, [data-blobity], [data-blobity-tooltip]',
+        "a, button, [data-blobity], [data-blobity-tooltip]",
       focusableElementsOffsetX: 5,
       focusableElementsOffsetY: 4,
       font: "'JetBrains Mono', monospace",
@@ -97,7 +97,7 @@ export function useBlobity(options?: {
     } as any);
 
     blobityRef.current = blobity;
-    document.body.classList.add('blobity-active');
+    document.body.classList.add("blobity-active");
 
     // Theme observer
     const observer = new MutationObserver(() => {
@@ -111,7 +111,7 @@ export function useBlobity(options?: {
 
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['data-theme', 'class'],
+      attributeFilter: ["data-theme", "class"],
     });
 
     // Scroll bounce
@@ -125,14 +125,14 @@ export function useBlobity(options?: {
     };
 
     if (options?.scrollBounce !== false) {
-      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener("scroll", onScroll, { passive: true });
     }
 
     // Cleanup
     return () => {
       observer.disconnect();
-      window.removeEventListener('scroll', onScroll);
-      document.body.classList.remove('blobity-active');
+      window.removeEventListener("scroll", onScroll);
+      document.body.classList.remove("blobity-active");
       blobity.destroy();
       blobityRef.current = null;
     };
@@ -145,19 +145,19 @@ export function useBlobity(options?: {
 ### Usage in Component
 
 ```tsx
-import { useBlobity } from './useBlobity';
+import { useBlobity } from "./useBlobity";
 
 export default function LandingPage() {
   useBlobity({
-    focusableElements: 'a, button, .card, [data-blobity-tooltip]',
+    focusableElements: "a, button, .card, [data-blobity-tooltip]",
     scrollBounce: true,
-    pageSelector: '.hero-section', // Only activate when hero exists
+    pageSelector: ".hero-section", // Only activate when hero exists
   });
 
   return (
-    <main className='hero-section'>
+    <main className="hero-section">
       <h1>Welcome</h1>
-      <div className='card' data-blobity-tooltip='Learn more'>
+      <div className="card" data-blobity-tooltip="Learn more">
         Feature Card
       </div>
       <button>Get Started</button>
@@ -185,9 +185,9 @@ body.blobity-active [data-blobity-tooltip] {
 ### useBlobity.ts
 
 ```ts
-import { onMounted, onUnmounted, ref } from 'vue';
-import type { Ref } from 'vue';
-import Blobity from 'blobity';
+import { onMounted, onUnmounted, ref } from "vue";
+import type { Ref } from "vue";
+import Blobity from "blobity";
 
 interface BlobityTheme {
   color: string;
@@ -196,19 +196,19 @@ interface BlobityTheme {
 }
 
 const darkTheme: BlobityTheme = {
-  color: '#ffffff',
-  dotColor: '#10b981',
-  fontColor: '#0d1117',
+  color: "#ffffff",
+  dotColor: "#10b981",
+  fontColor: "#0d1117",
 };
 
 const lightTheme: BlobityTheme = {
-  color: '#190a11',
-  dotColor: '#111827',
-  fontColor: '#000000',
+  color: "#190a11",
+  dotColor: "#111827",
+  fontColor: "#000000",
 };
 
 function isDark(): boolean {
-  return document.documentElement.getAttribute('data-theme') !== 'light';
+  return document.documentElement.getAttribute("data-theme") !== "light";
 }
 
 function getTheme(): BlobityTheme {
@@ -234,7 +234,7 @@ export function useBlobity(options?: {
 
   onMounted(() => {
     const isTouchDevice =
-      'ontouchstart' in window || navigator.maxTouchPoints > 0;
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
     if (
@@ -244,22 +244,22 @@ export function useBlobity(options?: {
       return;
     }
 
-    if (document.body.classList.contains('blobity-active')) return;
+    if (document.body.classList.contains("blobity-active")) return;
 
     const theme = getTheme();
 
     const blobity = new Blobity({
-      licenseKey: 'opensource',
+      licenseKey: "opensource",
       invert: true,
       zIndex: 50,
       color: theme.color,
       dotColor: theme.dotColor,
       radius: 6,
       magnetic: false,
-      mode: 'normal',
+      mode: "normal",
       focusableElements:
         options?.focusableElements ??
-        'a, button, [data-blobity], [data-blobity-tooltip]',
+        "a, button, [data-blobity], [data-blobity-tooltip]",
       focusableElementsOffsetX: 5,
       focusableElementsOffsetY: 4,
       font: "'JetBrains Mono', monospace",
@@ -270,7 +270,7 @@ export function useBlobity(options?: {
     } as any);
 
     blobityRef.value = blobity;
-    document.body.classList.add('blobity-active');
+    document.body.classList.add("blobity-active");
 
     // Theme observer
     observer = new MutationObserver(() => {
@@ -284,19 +284,19 @@ export function useBlobity(options?: {
 
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['data-theme', 'class'],
+      attributeFilter: ["data-theme", "class"],
     });
 
     // Scroll bounce
     if (options?.scrollBounce !== false) {
-      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener("scroll", onScroll, { passive: true });
     }
   });
 
   onUnmounted(() => {
     observer?.disconnect();
-    window.removeEventListener('scroll', onScroll);
-    document.body.classList.remove('blobity-active');
+    window.removeEventListener("scroll", onScroll);
+    document.body.classList.remove("blobity-active");
     blobityRef.value?.destroy();
     blobityRef.value = null;
   });
@@ -309,10 +309,10 @@ export function useBlobity(options?: {
 
 ```vue
 <script setup lang="ts">
-import { useBlobity } from './useBlobity';
+import { useBlobity } from "./useBlobity";
 
 const blobity = useBlobity({
-  focusableElements: 'a, button, .card, [data-blobity-tooltip]',
+  focusableElements: "a, button, .card, [data-blobity-tooltip]",
   scrollBounce: true,
 });
 </script>
@@ -343,22 +343,22 @@ body.blobity-active [data-blobity-tooltip] {
 ### blobityMixin.js
 
 ```js
-import Blobity from 'blobity';
+import Blobity from "blobity";
 
 const darkTheme = {
-  color: '#ffffff',
-  dotColor: '#10b981',
-  fontColor: '#0d1117',
+  color: "#ffffff",
+  dotColor: "#10b981",
+  fontColor: "#0d1117",
 };
 
 const lightTheme = {
-  color: '#190a11',
-  dotColor: '#111827',
-  fontColor: '#000000',
+  color: "#190a11",
+  dotColor: "#111827",
+  fontColor: "#000000",
 };
 
 function isDark() {
-  return document.documentElement.getAttribute('data-theme') !== 'light';
+  return document.documentElement.getAttribute("data-theme") !== "light";
 }
 
 function getTheme() {
@@ -387,29 +387,29 @@ export default {
   methods: {
     _initBlobity() {
       const isTouchDevice =
-        'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        "ontouchstart" in window || navigator.maxTouchPoints > 0;
       if (isTouchDevice) return;
 
       // Override these in your component if needed
       const pageSelector = this.blobityPageSelector || null;
       if (pageSelector && !document.querySelector(pageSelector)) return;
 
-      if (document.body.classList.contains('blobity-active')) return;
+      if (document.body.classList.contains("blobity-active")) return;
 
       const theme = getTheme();
 
       this._blobity = new Blobity({
-        licenseKey: 'opensource',
+        licenseKey: "opensource",
         invert: true,
         zIndex: 50,
         color: theme.color,
         dotColor: theme.dotColor,
         radius: 6,
         magnetic: false,
-        mode: 'normal',
+        mode: "normal",
         focusableElements:
           this.blobityFocusableElements ||
-          'a, button, [data-blobity], [data-blobity-tooltip]',
+          "a, button, [data-blobity], [data-blobity-tooltip]",
         focusableElementsOffsetX: 5,
         focusableElementsOffsetY: 4,
         font: "'JetBrains Mono', monospace",
@@ -419,7 +419,7 @@ export default {
         tooltipPadding: 12,
       });
 
-      document.body.classList.add('blobity-active');
+      document.body.classList.add("blobity-active");
 
       // Theme observer
       this._blobityObserver = new MutationObserver(() => {
@@ -433,7 +433,7 @@ export default {
 
       this._blobityObserver.observe(document.documentElement, {
         attributes: true,
-        attributeFilter: ['data-theme', 'class'],
+        attributeFilter: ["data-theme", "class"],
       });
 
       // Scroll bounce
@@ -444,7 +444,7 @@ export default {
           this._blobityScrollTimeout = null;
         }, 150);
       };
-      window.addEventListener('scroll', this._onBlobityScroll, {
+      window.addEventListener("scroll", this._onBlobityScroll, {
         passive: true,
       });
     },
@@ -455,9 +455,9 @@ export default {
         this._blobityObserver = null;
       }
       if (this._onBlobityScroll) {
-        window.removeEventListener('scroll', this._onBlobityScroll);
+        window.removeEventListener("scroll", this._onBlobityScroll);
       }
-      document.body.classList.remove('blobity-active');
+      document.body.classList.remove("blobity-active");
       if (this._blobity) {
         this._blobity.destroy();
         this._blobity = null;
@@ -479,7 +479,7 @@ export default {
 </template>
 
 <script>
-import blobityMixin from './blobityMixin';
+import blobityMixin from "./blobityMixin";
 
 export default {
   mixins: [blobityMixin],
@@ -487,8 +487,8 @@ export default {
   // Optional: customize via data properties
   data() {
     return {
-      blobityFocusableElements: 'a, button, .card, [data-blobity-tooltip]',
-      blobityPageSelector: '.hero-section',
+      blobityFocusableElements: "a, button, .card, [data-blobity-tooltip]",
+      blobityPageSelector: ".hero-section",
     };
   },
 };

@@ -22,16 +22,16 @@ $BASE_PATH/
 
 ## 服务清单
 
-| 服务 | Compose 文件 | 端口 | 访问地址 |
-|------|-------------|------|----------|
-| Heimdall | heimdall-compose.yml | 5233, 5234 | http://localhost:5233 |
-| Nginx PM | nginx-pm-compose.yml | 80, 81, 443 | http://localhost:81 |
-| Portainer | portainer-compose.yml | 9000 | http://localhost:9000 |
-| Qinglong | qinglong-compose.yml | 5700 | http://localhost:5700 |
-| MySQL | mysql-compose.yml | 3306 | localhost:3306 |
-| Mermaid | mermaid-compose.yml | 3301 | http://localhost:3301 |
-| Subconverter | subconverter-compose.yml | 25500 | http://localhost:25500 |
-| Sub-web | sub-web-compose.yml | 18080 | http://localhost:18080 |
+| 服务         | Compose 文件             | 端口        | 访问地址                 |
+| ------------ | ------------------------ | ----------- | ------------------------ |
+| Heimdall     | heimdall-compose.yml     | 5233, 5234  | <http://localhost:5233>  |
+| Nginx PM     | nginx-pm-compose.yml     | 80, 81, 443 | <http://localhost:81>    |
+| Portainer    | portainer-compose.yml    | 9000        | <http://localhost:9000>  |
+| Qinglong     | qinglong-compose.yml     | 5700        | <http://localhost:5700>  |
+| MySQL        | mysql-compose.yml        | 3306        | localhost:3306           |
+| Mermaid      | mermaid-compose.yml      | 3301        | <http://localhost:3301>  |
+| Subconverter | subconverter-compose.yml | 25500       | <http://localhost:25500> |
+| Sub-web      | sub-web-compose.yml      | 18080       | <http://localhost:18080> |
 
 ## 常用命令
 
@@ -84,6 +84,7 @@ environment:
 ## 备份
 
 关键目录：
+
 - `$BASE_PATH/appdata/` — 应用数据
 - `$BASE_PATH/appdirectory/` — NPM 数据
 

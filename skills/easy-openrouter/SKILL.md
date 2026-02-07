@@ -38,6 +38,7 @@ bash scripts/call_openrouter.sh \
 **Output includes**: response time (ms), cost ($), token usage, full response
 
 **Parameters**:
+
 - `--model`: Model ID (required)
 - `--prompt`: Prompt text (required)
 - `--system`: System prompt (optional)
@@ -52,6 +53,7 @@ provider/model-name[:modifier]
 ```
 
 **Common models**:
+
 - `anthropic/claude-sonnet-4`
 - `openai/gpt-4o`
 - `openai/gpt-4o-mini`
@@ -59,6 +61,7 @@ provider/model-name[:modifier]
 - `deepseek/deepseek-chat`
 
 **Modifiers**:
+
 - `:nitro` - Use fastest provider
 - `:online` - Enable web search
 - Combinable: `anthropic/claude-sonnet-4:nitro:online`
@@ -71,16 +74,16 @@ provider/model-name[:modifier]
 https://openrouter.ai/rankings?category=<category>#categories
 ```
 
-| Category | URL |
-|----------|-----|
-| Programming | `https://openrouter.ai/rankings?category=programming#categories` |
-| Translation | `https://openrouter.ai/rankings?category=translation#categories` |
-| Science | `https://openrouter.ai/rankings?category=science#categories` |
-| Finance | `https://openrouter.ai/rankings?category=finance#categories` |
-| Legal | `https://openrouter.ai/rankings?category=legal#categories` |
-| Academia | `https://openrouter.ai/rankings?category=academia#categories` |
-| Marketing | `https://openrouter.ai/rankings?category=marketing#categories` |
-| SEO | `https://openrouter.ai/rankings?category=marketing/seo#categories` |
+| Category    | URL                                                                |
+| ----------- | ------------------------------------------------------------------ |
+| Programming | `https://openrouter.ai/rankings?category=programming#categories`   |
+| Translation | `https://openrouter.ai/rankings?category=translation#categories`   |
+| Science     | `https://openrouter.ai/rankings?category=science#categories`       |
+| Finance     | `https://openrouter.ai/rankings?category=finance#categories`       |
+| Legal       | `https://openrouter.ai/rankings?category=legal#categories`         |
+| Academia    | `https://openrouter.ai/rankings?category=academia#categories`      |
+| Marketing   | `https://openrouter.ai/rankings?category=marketing#categories`     |
+| SEO         | `https://openrouter.ai/rankings?category=marketing/seo#categories` |
 
 ### Find Provider by Performance/Price
 
@@ -89,11 +92,13 @@ https://openrouter.ai/<model-slug>/providers?sort=<sort>
 ```
 
 **Sort options**:
+
 - `throughput` - By throughput (tokens/sec)
 - `latency` - By latency
 - `price` - By price
 
 **Example**: Find fastest provider for claude-sonnet-4
+
 ```
 https://openrouter.ai/anthropic/claude-sonnet-4/providers?sort=throughput
 ```
@@ -131,6 +136,7 @@ jq -s '[.[0], .[1]] | map({model, response_time_ms, cost})' claude.json gpt4o.js
 ### 3. Choose Model for Chainlit Demo
 
 Considerations:
+
 - **For demos**: Prioritize speed → use `:nitro` modifier
 - **Cost-sensitive**: Use `gpt-4o-mini` or `deepseek-chat`
 - **Quality-first**: Use `claude-sonnet-4` or `gpt-4o`

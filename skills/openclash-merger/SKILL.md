@@ -60,19 +60,19 @@ openclash-merger/
 
 ## 策略组
 
-| 策略组 | 说明 |
-|--------|------|
-| 🚀 节点选择 | 主选择，默认香港 |
-| 🚀 手动切换 | 包含所有节点 |
-| 📲 电报消息 | Telegram |
-| 💬 Ai平台 | ChatGPT/Claude/Gemini |
-| 📹 油管视频 | YouTube |
-| 🎥 奈飞视频 | Netflix |
-| 📺 哔哩哔哩 | B站 |
-| Ⓜ️ 微软Bing | Bing + Copilot |
-| 🎯 全球直连 | 直连 |
-| 🛑 广告拦截 | 广告 |
-| 🐟 漏网之鱼 | 未匹配流量 |
+| 策略组      | 说明                  |
+| ----------- | --------------------- |
+| 🚀 节点选择 | 主选择，默认香港      |
+| 🚀 手动切换 | 包含所有节点          |
+| 📲 电报消息 | Telegram              |
+| 💬 Ai平台   | ChatGPT/Claude/Gemini |
+| 📹 油管视频 | YouTube               |
+| 🎥 奈飞视频 | Netflix               |
+| 📺 哔哩哔哩 | B站                   |
+| Ⓜ️ 微软Bing | Bing + Copilot        |
+| 🎯 全球直连 | 直连                  |
+| 🛑 广告拦截 | 广告                  |
+| 🐟 漏网之鱼 | 未匹配流量            |
 
 ## 地区节点组（url-test 自动测速）
 
@@ -82,14 +82,14 @@ openclash-merger/
 
 按节点名中的关键字匹配：
 
-| 地区 | 关键字 |
-|------|--------|
-| 香港 | 香港, HK, Hong Kong |
-| 日本 | 日本, JP, Japan |
-| 美国 | 美国, US, USA, America |
+| 地区   | 关键字                      |
+| ------ | --------------------------- |
+| 香港   | 香港, HK, Hong Kong         |
+| 日本   | 日本, JP, Japan             |
+| 美国   | 美国, US, USA, America      |
 | 新加坡 | 新加坡, SG, Singapore, 狮城 |
-| 台湾 | 台湾, TW, Taiwan |
-| 韩国 | 韩国, KR, Korea |
+| 台湾   | 台湾, TW, Taiwan            |
+| 韩国   | 韩国, KR, Korea             |
 
 未匹配的节点归入"其他"，会包含在"手动切换"组中。
 
@@ -98,6 +98,7 @@ openclash-merger/
 ### 配置加载失败
 
 检查 OpenClash 日志：
+
 - `proxy [xxx] not found` → 策略组名不匹配
 - 节点 `not found` → 节点组引用了不存在的节点
 
