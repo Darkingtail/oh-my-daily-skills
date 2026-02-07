@@ -18,7 +18,14 @@ Claude Code 日常技能合集 — URL 阅读、图表绘制、LLM 测试、3D �
 ### 通过 `npx skills`（推荐）
 
 ```bash
+# 安装全部技能
 npx skills add shiqkuangsan/oh-my-daily-skills
+
+# 列出可用技能（不安装）
+npx skills add shiqkuangsan/oh-my-daily-skills --list
+
+# 安装单个技能
+npx skills add shiqkuangsan/oh-my-daily-skills --skill ink-reader
 ```
 
 ### 通过 Claude Code Plugin

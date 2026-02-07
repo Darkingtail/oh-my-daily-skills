@@ -18,7 +18,14 @@ This project follows the [Agent Skills Specification](https://agentskills.io/spe
 ### Via `npx skills` (Recommended)
 
 ```bash
+# Install all skills
 npx skills add shiqkuangsan/oh-my-daily-skills
+
+# List available skills without installing
+npx skills add shiqkuangsan/oh-my-daily-skills --list
+
+# Install a specific skill
+npx skills add shiqkuangsan/oh-my-daily-skills --skill ink-reader
 ```
 
 ### Via Claude Code Plugin
