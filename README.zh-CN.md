@@ -47,7 +47,6 @@ claude --plugin-dir /path/to/oh-my-daily-skills
 | nano-banana-builder | `/tooyoung:nano-banana-builder` | 基于 Google Gemini API 构建图像生成应用    |
 | openclash-merger    | `/tooyoung:openclash-merger`    | 合并 OpenClash 订阅配置并生成分流规则      |
 | persona-define      | `/tooyoung:persona-define`      | 为 Claude Code 定义个性化身份风格（人设）  |
-| shitcode            | `/shitcode`                     | 编写"烂代码"用于教学或娱乐演示             |
 | threejs-builder     | `/tooyoung:threejs-builder`     | 创建 Three.js 3D Web 应用                  |
 
 ### 个人技能（模板）
@@ -57,10 +56,11 @@ claude --plugin-dir /path/to/oh-my-daily-skills
 > 1. 复制到你的 `~/.claude/skills/` 目录
 > 2. 将 `$BASE_PATH` 等占位符替换为实际路径
 
-| 技能            | 描述                          |
-| --------------- | ----------------------------- |
-| expense-receipt | AI 订阅报销收据识别（个人版） |
-| mac-docker      | Docker 服务管理配置模板       |
+| 技能            | 描述                           |
+| --------------- | ------------------------------ |
+| expense-receipt | AI 订阅报销收据识别（个人版）  |
+| mac-docker      | Docker 服务管理配置模板        |
+| shitcode        | 编写"烂代码"用于教学或娱乐演示 |
 
 ## 本地配置
 
@@ -92,11 +92,11 @@ oh-my-daily-skills/
 │   ├── nano-banana-builder/
 │   ├── openclash-merger/
 │   ├── persona-define/
-│   ├── shitcode/
 │   └── threejs-builder/
 ├── personal/                # 个人模板（不分发）
 │   ├── expense-receipt/
-│   └── mac-docker/
+│   ├── mac-docker/
+│   └── shitcode/
 ├── CLAUDE.md
 └── README.md
 ```

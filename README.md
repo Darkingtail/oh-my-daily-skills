@@ -36,19 +36,18 @@ Copy individual skill directories to `~/.claude/skills/` for personal use.
 
 ### General Skills (`tooyoung:`)
 
-| Skill               | Command                         | Description                                                |
-| ------------------- | ------------------------------- | ---------------------------------------------------------- |
-| blobity-cursor      | `/tooyoung:blobity-cursor`      | Add Blobity canvas cursor effect to any landing page       |
-| chainlit-builder    | `/tooyoung:chainlit-builder`    | Scaffold Chainlit AI chat demos for product presentations  |
-| easy-openrouter     | `/tooyoung:easy-openrouter`     | Test and compare LLM models via OpenRouter                 |
-| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | Create Excalidraw hand-drawn style diagrams                |
-| gh-star-list        | `/tooyoung:gh-star-list`        | Categorize GitHub starred repos into Lists using AI        |
-| ink-reader          | `/tooyoung:ink-reader`          | Read any URL with auto platform detection and fallback     |
-| nano-banana-builder | `/tooyoung:nano-banana-builder` | Build image generation apps with Google Gemini APIs        |
-| openclash-merger    | `/tooyoung:openclash-merger`    | Merge OpenClash subscription configs with rule groups      |
-| persona-define      | `/tooyoung:persona-define`      | Define personalized identity style for Claude Code         |
-| shitcode            | `/shitcode`                     | Write intentionally bad code for teaching or entertainment |
-| threejs-builder     | `/tooyoung:threejs-builder`     | Create Three.js 3D web applications                        |
+| Skill               | Command                         | Description                                               |
+| ------------------- | ------------------------------- | --------------------------------------------------------- |
+| blobity-cursor      | `/tooyoung:blobity-cursor`      | Add Blobity canvas cursor effect to any landing page      |
+| chainlit-builder    | `/tooyoung:chainlit-builder`    | Scaffold Chainlit AI chat demos for product presentations |
+| easy-openrouter     | `/tooyoung:easy-openrouter`     | Test and compare LLM models via OpenRouter                |
+| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | Create Excalidraw hand-drawn style diagrams               |
+| gh-star-list        | `/tooyoung:gh-star-list`        | Categorize GitHub starred repos into Lists using AI       |
+| ink-reader          | `/tooyoung:ink-reader`          | Read any URL with auto platform detection and fallback    |
+| nano-banana-builder | `/tooyoung:nano-banana-builder` | Build image generation apps with Google Gemini APIs       |
+| openclash-merger    | `/tooyoung:openclash-merger`    | Merge OpenClash subscription configs with rule groups     |
+| persona-define      | `/tooyoung:persona-define`      | Define personalized identity style for Claude Code        |
+| threejs-builder     | `/tooyoung:threejs-builder`     | Create Three.js 3D web applications                       |
 
 ### Personal Skills (Templates)
 
@@ -57,10 +56,11 @@ Copy individual skill directories to `~/.claude/skills/` for personal use.
 > 1. Copy to your `~/.claude/skills/` directory
 > 2. Replace placeholders like `$BASE_PATH` with actual paths
 
-| Skill           | Description                                            |
-| --------------- | ------------------------------------------------------ |
-| expense-receipt | AI subscription expense receipt recognition (personal) |
-| mac-docker      | Docker service management config template              |
+| Skill           | Description                                                |
+| --------------- | ---------------------------------------------------------- |
+| expense-receipt | AI subscription expense receipt recognition (personal)     |
+| mac-docker      | Docker service management config template                  |
+| shitcode        | Write intentionally bad code for teaching or entertainment |
 
 ## Local Configuration
 
@@ -92,11 +92,11 @@ oh-my-daily-skills/
 │   ├── nano-banana-builder/
 │   ├── openclash-merger/
 │   ├── persona-define/
-│   ├── shitcode/
 │   └── threejs-builder/
 ├── personal/                # Personal templates (not distributed)
 │   ├── expense-receipt/
-│   └── mac-docker/
+│   ├── mac-docker/
+│   └── shitcode/
 ├── CLAUDE.md
 └── README.md
 ```

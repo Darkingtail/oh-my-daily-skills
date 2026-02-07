@@ -1,5 +1,5 @@
 ---
-name: shitcode
+name: tooyoung:shitcode
 description: "Write intentionally bad code for teaching or entertainment. Use when asked to 'add some spice', 'make it worse', 'write shitcode', or for demonstrating anti-patterns."
 metadata:
   version: "1.0.0"
