@@ -2,7 +2,7 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-Claude Code 日常技能合集。
+Claude Code 日常技能合集 — URL 阅读、图表绘制、LLM 测试、3D 场景、对话 Demo 等。
 
 ## 标准规范
 
@@ -15,73 +15,40 @@ Claude Code 日常技能合集。
 
 ## 安装
 
-克隆仓库并本地使用：
+### 通过 `npx skills`（推荐）
+
+```bash
+npx skills add shiqkuangsan/oh-my-daily-skills
+```
+
+### 通过 Claude Code Plugin
 
 ```bash
 git clone https://github.com/shiqkuangsan/oh-my-daily-skills.git
 claude --plugin-dir /path/to/oh-my-daily-skills
 ```
 
-或者，你也可以将单个技能复制到 `~/.claude/skills/` 目录下个人使用。
+### 手动安装
 
-## 本地配置
-
-你可以通过本地配置文件自定义 Claude 的行为，这些文件不会被 git 追踪：
-
-### `CLAUDE.local.md`
-
-在项目根目录创建 `CLAUDE.local.md` 文件来添加你的个人指令：
-
-```bash
-touch CLAUDE.local.md
-```
-
-此文件特点：
-
-- ✅ **私有** - 被 git 忽略（在 `.gitignore` 中）
-- ✅ **项目专属** - 仅影响当前项目
-- ✅ **优先级高** - 覆盖默认行为
-
-**使用场景：**
-
-- 自定义语气和风格偏好
-- 个人编码规范
-- 项目专属快捷方式
-- 环境相关配置
-
-**示例内容：**
-
-```markdown
-# 我的个人指令
-
-## 语气
-
-- 简洁直接
-- 少用 emoji
-
-## 代码风格
-
-- 始终使用 TypeScript 严格模式
-- React 优先使用函数组件
-```
+将单个技能目录复制到 `~/.claude/skills/` 即可使用。
 
 ## 技能列表
 
 ### 通用技能 (`tooyoung:`)
 
-| 技能                | 命令                            | 描述                                                  |
-| ------------------- | ------------------------------- | ----------------------------------------------------- |
-| blobity-cursor      | `/tooyoung:blobity-cursor`      | 为任意落地页添加 Blobity 光标特效                     |
-| chainlit-builder    | `/tooyoung:chainlit-builder`    | 快速搭建 Chainlit AI 对话 Demo                        |
-| easy-openrouter     | `/tooyoung:easy-openrouter`     | 通过 OpenRouter 测试和比较 LLM 模型                   |
-| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | 创建 Excalidraw 手绘风格图表                          |
-| gh-star-list        | `/tooyoung:gh-star-list`        | 用 AI 自动将 GitHub Stars 分类整理到 Lists            |
-| nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini 图像生成应用                            |
-| openclash-merger    | `/tooyoung:openclash-merger`    | OpenClash 订阅配置合并                                |
-| persona-define      | `/tooyoung:persona-define`      | 为 Claude Code 定义个性化身份风格（人设）             |
-| ink-reader          | `/tooyoung:ink-reader`          | 智能读取任意 URL 内容，自动识别平台并选择最优抓取策略 |
-| shitcode            | `/shitcode`                     | 编写"烂代码"用于教学或娱乐演示                        |
-| threejs-builder     | `/tooyoung:threejs-builder`     | Three.js Web 应用创建                                 |
+| 技能                | 命令                            | 描述                                       |
+| ------------------- | ------------------------------- | ------------------------------------------ |
+| blobity-cursor      | `/tooyoung:blobity-cursor`      | 为任意落地页添加 Blobity 光标特效          |
+| chainlit-builder    | `/tooyoung:chainlit-builder`    | 搭建 Chainlit AI 对话 Demo 用于产品演示    |
+| easy-openrouter     | `/tooyoung:easy-openrouter`     | 通过 OpenRouter 测试和比较 LLM 模型        |
+| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | 创建 Excalidraw 手绘风格图表               |
+| gh-star-list        | `/tooyoung:gh-star-list`        | 用 AI 自动将 GitHub Stars 分类整理到 Lists |
+| ink-reader          | `/tooyoung:ink-reader`          | 智能读取 URL 内容，自动识别平台和抓取策略  |
+| nano-banana-builder | `/tooyoung:nano-banana-builder` | 基于 Google Gemini API 构建图像生成应用    |
+| openclash-merger    | `/tooyoung:openclash-merger`    | 合并 OpenClash 订阅配置并生成分流规则      |
+| persona-define      | `/tooyoung:persona-define`      | 为 Claude Code 定义个性化身份风格（人设）  |
+| shitcode            | `/shitcode`                     | 编写"烂代码"用于教学或娱乐演示             |
+| threejs-builder     | `/tooyoung:threejs-builder`     | 创建 Three.js 3D Web 应用                  |
 
 ### 个人技能（模板）
 
@@ -94,6 +61,20 @@ touch CLAUDE.local.md
 | --------------- | ----------------------------- |
 | expense-receipt | AI 订阅报销收据识别（个人版） |
 | mac-docker      | Docker 服务管理配置模板       |
+
+## 本地配置
+
+在项目根目录创建 `CLAUDE.local.md` 文件来添加个人指令：
+
+```bash
+touch CLAUDE.local.md
+```
+
+此文件特点：
+
+- ✅ **私有** - 被 git 忽略（在 `.gitignore` 中）
+- ✅ **项目专属** - 仅影响当前项目
+- ✅ **优先级高** - 覆盖默认行为
 
 ## 项目结构
 
@@ -116,6 +97,7 @@ oh-my-daily-skills/
 ├── personal/                # 个人模板（不分发）
 │   ├── expense-receipt/
 │   └── mac-docker/
+├── CLAUDE.md
 └── README.md
 ```
 

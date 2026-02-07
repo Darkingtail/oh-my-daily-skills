@@ -1,11 +1,11 @@
 {
   "name": "oh-my-daily-skills",
-  "version": "1.0.1",
-  "description": "A collection of daily-use skills for Claude Code, prefixed with sansan:",
+  "version": "1.1.0",
+  "description": "Daily-driver skills for Claude Code — URL reading, diagram drawing, LLM benchmarking, 3D scenes, chat demos, and more.",
   "author": {
     "name": "shiqkuangsan"
   },
   "repository": "https://github.com/shiqkuangsan/oh-my-daily-skills",
   "license": "MIT",
-  "keywords": ["skills", "openrouter", "llm", "productivity"]
+  "keywords": ["skills", "productivity", "ink-reader", "excalidraw", "threejs", "openrouter", "chainlit", "gemini"]
 }

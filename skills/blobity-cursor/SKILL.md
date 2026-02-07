@@ -1,6 +1,6 @@
 ---
 name: tooyoung:blobity-cursor
-description: Add Blobity canvas cursor effect to any landing page. Supports HTML/React/Vue3/Vue2, light/dark theme, tooltip mode. Trigger words: blobity, cursor effect, landing page cursor, 光标特效
+description: "Add Blobity canvas cursor effect to any landing page. Supports HTML/React/Vue3/Vue2, light/dark theme, tooltip mode. Trigger words: blobity, cursor effect, landing page cursor, 光标特效"
 metadata:
   version: "1.0.0"
 ---

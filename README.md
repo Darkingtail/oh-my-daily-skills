@@ -2,7 +2,7 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-A collection of daily-use skills for Claude Code.
+Daily-driver skills for Claude Code — URL reading, diagram drawing, LLM benchmarking, 3D scenes, chat demos, and more.
 
 ## Specification
 
@@ -15,73 +15,40 @@ This project follows the [Agent Skills Specification](https://agentskills.io/spe
 
 ## Installation
 
-Clone the repository and use it locally:
+### Via `npx skills` (Recommended)
+
+```bash
+npx skills add shiqkuangsan/oh-my-daily-skills
+```
+
+### Via Claude Code Plugin
 
 ```bash
 git clone https://github.com/shiqkuangsan/oh-my-daily-skills.git
 claude --plugin-dir /path/to/oh-my-daily-skills
 ```
 
-Alternatively, you can copy individual skills to your `~/.claude/skills/` directory for personal use.
+### Manual
 
-## Local Configuration
-
-You can customize Claude's behavior with local configuration files that won't be tracked by git:
-
-### `CLAUDE.local.md`
-
-Create a `CLAUDE.local.md` file in the project root to add your personal instructions:
-
-```bash
-touch CLAUDE.local.md
-```
-
-This file is:
-
-- ✅ **Private** - Ignored by git (listed in `.gitignore`)
-- ✅ **Project-specific** - Only affects this project
-- ✅ **Higher priority** - Overrides default behaviors
-
-**Example use cases:**
-
-- Custom tone and style preferences
-- Personal coding conventions
-- Project-specific shortcuts
-- Environment-specific configurations
-
-**Example content:**
-
-```markdown
-# My Personal Instructions
-
-## Tone
-
-- Be concise and direct
-- Use emojis sparingly
-
-## Code Style
-
-- Always use TypeScript strict mode
-- Prefer functional components in React
-```
+Copy individual skill directories to `~/.claude/skills/` for personal use.
 
 ## Skills
 
 ### General Skills (`tooyoung:`)
 
-| Skill               | Command                         | Description                                                     |
-| ------------------- | ------------------------------- | --------------------------------------------------------------- |
-| blobity-cursor      | `/tooyoung:blobity-cursor`      | Add Blobity canvas cursor effect to any landing page            |
-| chainlit-builder    | `/tooyoung:chainlit-builder`    | Build Chainlit AI chat demo quickly                             |
-| easy-openrouter     | `/tooyoung:easy-openrouter`     | Test and compare LLM models via OpenRouter                      |
-| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | Create Excalidraw hand-drawn style diagrams                     |
-| gh-star-list        | `/tooyoung:gh-star-list`        | Categorize GitHub starred repos into Lists using AI             |
-| nano-banana-builder | `/tooyoung:nano-banana-builder` | Google Gemini image generation app                              |
-| openclash-merger    | `/tooyoung:openclash-merger`    | Merge OpenClash subscription configs                            |
-| persona-define      | `/tooyoung:persona-define`      | Define personalized identity style for Claude Code              |
-| ink-reader          | `/tooyoung:ink-reader`          | Intelligently read any URL content with auto platform detection |
-| shitcode            | `/shitcode`                     | Write intentionally bad code for teaching or entertainment      |
-| threejs-builder     | `/tooyoung:threejs-builder`     | Create Three.js web applications                                |
+| Skill               | Command                         | Description                                                |
+| ------------------- | ------------------------------- | ---------------------------------------------------------- |
+| blobity-cursor      | `/tooyoung:blobity-cursor`      | Add Blobity canvas cursor effect to any landing page       |
+| chainlit-builder    | `/tooyoung:chainlit-builder`    | Scaffold Chainlit AI chat demos for product presentations  |
+| easy-openrouter     | `/tooyoung:easy-openrouter`     | Test and compare LLM models via OpenRouter                 |
+| excalidraw-artist   | `/tooyoung:excalidraw-artist`   | Create Excalidraw hand-drawn style diagrams                |
+| gh-star-list        | `/tooyoung:gh-star-list`        | Categorize GitHub starred repos into Lists using AI        |
+| ink-reader          | `/tooyoung:ink-reader`          | Read any URL with auto platform detection and fallback     |
+| nano-banana-builder | `/tooyoung:nano-banana-builder` | Build image generation apps with Google Gemini APIs        |
+| openclash-merger    | `/tooyoung:openclash-merger`    | Merge OpenClash subscription configs with rule groups      |
+| persona-define      | `/tooyoung:persona-define`      | Define personalized identity style for Claude Code         |
+| shitcode            | `/shitcode`                     | Write intentionally bad code for teaching or entertainment |
+| threejs-builder     | `/tooyoung:threejs-builder`     | Create Three.js 3D web applications                        |
 
 ### Personal Skills (Templates)
 
@@ -94,6 +61,20 @@ This file is:
 | --------------- | ------------------------------------------------------ |
 | expense-receipt | AI subscription expense receipt recognition (personal) |
 | mac-docker      | Docker service management config template              |
+
+## Local Configuration
+
+Create a `CLAUDE.local.md` file in the project root to add personal instructions:
+
+```bash
+touch CLAUDE.local.md
+```
+
+This file is:
+
+- ✅ **Private** - Ignored by git (listed in `.gitignore`)
+- ✅ **Project-specific** - Only affects this project
+- ✅ **Higher priority** - Overrides default behaviors
 
 ## Structure
 
@@ -116,6 +97,7 @@ oh-my-daily-skills/
 ├── personal/                # Personal templates (not distributed)
 │   ├── expense-receipt/
 │   └── mac-docker/
+├── CLAUDE.md
 └── README.md
 ```
 

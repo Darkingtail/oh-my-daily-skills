@@ -20,7 +20,7 @@ Each skill lives in `skills/<skill-name>/` with:
 ```yaml
 ---
 name: tooyoung:skill-name
-description: Single line description of what the skill does.
+description: "Single line description of what the skill does."
 compatibility: Optional environment requirements
 metadata:
   version: "0.1.0"
@@ -45,14 +45,27 @@ General skills 通过 plugin 和 `npx skills` 分发。Personal skills 在 `pers
 
 ## Key Guidelines
 
-- Description 必须是单行（不使用 YAML 多行语法 `>` 或 `|`）
+- Description 必须是单行（不使用 YAML 多行语法 `>` 或 `|`），且**必须用双引号包裹**（YAML 中冒号+空格是特殊语法，不加引号会导致 `npx skills` 解析失败）
+- Description 中如有双引号，改为单引号：`'example text'`
 - version 字段放在 `metadata` 下，值用引号包裹
 - Personal skills 使用 `compatibility` 字段说明环境要求
 - SKILL.md 保持精简，高级内容移至 `references/` 目录
 
-## Plugin Version
+## Versioning
 
-每次增删或修改 skill 后，必须同步更新 `.claude-plugin/plugin.json` 的 `version` 字段，遵循语义化版本：
+所有版本号遵循 [Semantic Versioning](https://semver.org/)，纯粹供人阅读（`npx skills` 使用 Git Tree SHA 检测变更）。
+
+### Skill Version（`metadata.version`）
+
+每个 SKILL.md 独立管理版本：
+
+- **PATCH (0.0.x)**: 措辞调整、格式修正、小幅优化
+- **MINOR (0.x.0)**: 新增章节、新增命令、功能扩展
+- **MAJOR (x.0.0)**: 重构结构、移除功能、不兼容变更
+
+### Plugin Version（`plugin.json`）
+
+反映仓库整体变更，每次增删或修改 skill 后同步更新：
 
 - 新增 skill → MINOR bump（如 `1.0.1` → `1.1.0`）
 - 修改现有 skill → PATCH bump（如 `1.1.0` → `1.1.1`）
@@ -69,11 +82,3 @@ pnpm run format       # 格式化所有 md 文件
 ```
 
 编辑 `.md` 文件后，确保 `pnpm run check` 通过再提交。
-
-## Versioning
-
-遵循 [Semantic Versioning](https://semver.org/)：
-
-- **MAJOR (x.0.0)**: 破坏性变更（重构结构、移除功能）
-- **MINOR (0.x.0)**: 新增功能（添加命令、新章节）
-- **PATCH (0.0.x)**: 修复优化（文档修正、格式调整）

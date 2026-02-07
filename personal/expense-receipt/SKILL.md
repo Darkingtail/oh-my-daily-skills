@@ -1,6 +1,6 @@
 ---
 name: personal:expense-receipt
-description: AI 订阅报销统计。识别收据+发票，自动匹配最优发票组合，输出统计表和报销备注。触发词：报销统计、收据识别、统计报销、AI 订阅费用
+description: "AI 订阅报销统计。识别收据+发票，自动匹配最优发票组合，输出统计表和报销备注。触发词：报销统计、收据识别、统计报销、AI 订阅费用"
 metadata:
   version: "1.1.0"
 ---

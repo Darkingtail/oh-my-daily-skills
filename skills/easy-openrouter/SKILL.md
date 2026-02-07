@@ -1,6 +1,6 @@
 ---
 name: tooyoung:easy-openrouter
-description: Quickly test and compare LLM models via OpenRouter. Find the fastest/cheapest model, compare response quality. Trigger words: openrouter, test model, compare models, find fastest model, find cheapest model
+description: "Quickly test and compare LLM models via OpenRouter. Find the fastest/cheapest model, compare response quality. Trigger words: openrouter, test model, compare models, find fastest model, find cheapest model"
 metadata:
   version: "1.0.0"
 ---
